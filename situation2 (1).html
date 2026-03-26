@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Situation 2 – Renouvellement baie réseau | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --surface2: #1c1c27;
+    --accent: #00e5ff; --accent2: #7c6cff;
+    --text: #f0f0f5; --muted: #8888a0; --border: rgba(255,255,255,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
+  .nav-back { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+  .page-header { padding: 120px 2rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .breadcrumb { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .page-tag { display: inline-block; background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.2); color: var(--accent); font-size: 0.75rem; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.5rem; }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 1rem; }
+  h1 span { color: var(--accent); }
+  .page-intro { color: var(--muted); font-size: 1.1rem; max-width: 680px; line-height: 1.8; }
+  .content { max-width: 1100px; margin: 0 auto; padding: 0 2rem 5rem; }
+  .block { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+  .block h2 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+  .block p { color: var(--muted); line-height: 1.8; margin-bottom: 0.75rem; }
+  .block ul { color: var(--muted); padding-left: 1.25rem; }
+  .block ul li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .photo-placeholder {
+    border: 1px dashed rgba(0,229,255,0.25);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 1rem 0;
+    background: rgba(0,229,255,0.03);
+  }
+  .photo-placeholder span { display: block; font-size: 1.5rem; margin-bottom: 0.5rem; opacity: 0.4; }
+  .equip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .equip-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+  .equip-card h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
+  .equip-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.6; margin: 0; }
+  .nat-example { background: rgba(124,108,255,0.08); border: 1px solid rgba(124,108,255,0.25); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem; font-family: monospace; font-size: 0.875rem; color: var(--muted); }
+  .nat-example strong { color: var(--accent2); }
+  .competence-section h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .tags-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+  .tag { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 4px 12px; font-size: 0.8rem; color: var(--muted); }
+  .nav-situations { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .sit-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 1.25rem; font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+  .sit-btn:hover { border-color: rgba(0,229,255,0.3); color: var(--accent); }
+  .sit-btn.active { border-color: rgba(0,229,255,0.4); color: var(--accent); background: rgba(0,229,255,0.05); }
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="stage2.html">← Retour au stage 2</a>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / <a href="stage2.html">Stage 2</a> / Situation 2</div>
+  <span class="page-tag">Situation professionnelle 2</span>
+  <h1>Renouvellement équipements <span>baie réseau client</span></h1>
+  <p class="page-intro">Remplacement de l'infrastructure réseau vieillissante d'un client : installation d'un routeur Ubiquiti, mise en place d'un backup 4G et configuration des règles NAT.</p>
+</div>
+
+<div class="content">
+
+  <div class="nav-situations">
+    <a href="stage2.html" class="sit-btn">Présentation entreprise</a>
+    <a href="journal.html" class="sit-btn">Journal de stage</a>
+    <a href="situation1.html" class="sit-btn">Situation 1</a>
+    <a href="situation2.html" class="sit-btn active">Situation 2</a>
+  </div>
+
+  <div class="block">
+    <h2>Contexte</h2>
+    <p>Dans le cadre d'un contrat de maintenance, l'entreprise cliente a constaté plusieurs limites liées à son ancienne infrastructure réseau. Les équipements en place étaient vieillissants, peu performants et ne permettaient pas d'assurer une continuité de service optimale en cas de panne Internet.</p>
+    <p>L'intervention a consisté à remplacer les anciens équipements par un routeur Ubiquiti plus performant, à intégrer un routeur 4G en backup, à revoir certaines règles NAT pour la gestion des équipements (notamment la borne DECT) et à vérifier la cohérence globale de la baie informatique.</p>
+    <div class="photo-placeholder">
+      <span>🖼</span>
+      Photo : baie informatique du client
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Équipements déployés</h2>
+    <div class="equip-grid">
+      <div class="equip-card">
+        <h3>Routeur Ubiquiti</h3>
+        <p>Élément central du réseau, configuré pour gérer le LAN et l'accès Internet (WAN). Deux ports WAN utilisés : lien principal et lien de secours 4G. Un port relié au switch pour distribuer la connectivité au réseau local. Supervision mise en place via sonde ping pour détecter toute indisponibilité.</p>
+      </div>
+      <div class="equip-card">
+        <h3>Routeur 4G (backup)</h3>
+        <p>Solution de secours : en cas de panne de la connexion fibre principale, le trafic Internet bascule automatiquement vers le lien 4G. Cette configuration assure la continuité de service et limite les interruptions d'activité.</p>
+      </div>
+      <div class="equip-card">
+        <h3>Borne DECT</h3>
+        <p>Dédiée à la téléphonie sans fil. Une règle NAT a été configurée pour permettre un accès rapide à son interface d'administration, sans impact sur le reste du réseau.</p>
+      </div>
+      <div class="equip-card">
+        <h3>Switch non manageable</h3>
+        <p>Distribue la connexion réseau aux différents équipements du réseau local. Fonctionnement simple et autonome, adapté aux besoins actuels de l'infrastructure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Configuration NAT (borne DECT)</h2>
+    <p>Afin de faciliter l'administration de la borne DECT depuis l'extérieur, une règle de translation de port a été configurée sur le routeur Ubiquiti :</p>
+    <div class="nat-example">
+      <strong>Règle NAT (exemple avec IP fictives)</strong><br><br>
+      Tout trafic entrant sur <strong>185.52.45.23:8888</strong><br>
+      est redirigé vers → <strong>192.168.27.21:443</strong><br>
+      Depuis : n'importe quelle IP source<br>
+      Interface : WAN1
+    </div>
+    <div class="photo-placeholder">
+      <span>🖼</span>
+      Capture : règle NAT dans l'interface Ubiquiti
+    </div>
+    <div class="photo-placeholder">
+      <span>🖼</span>
+      Capture : vue globale du routeur Ubiquiti et supervision
+    </div>
+  </div>
+
+  <div class="block competence-section">
+    <h2>Compétences mobilisées</h2>
+
+    <h3>Gérer le patrimoine informatique</h3>
+    <ul>
+      <li>Recenser et identifier les ressources numériques</li>
+      <li>Exploiter des référentiels, normes et standards adoptés par le prestataire informatique</li>
+      <li>Mettre en place et vérifier les niveaux d'habilitation</li>
+    </ul>
+
+    <h3>Répondre aux incidents et aux demandes d'assistance</h3>
+    <ul>
+      <li>Collecter, suivre et orienter des demandes</li>
+      <li>Traiter des demandes concernant les services réseau et système</li>
+    </ul>
+
+    <h3>Mettre à disposition des utilisateurs un service informatique</h3>
+    <ul>
+      <li>Réaliser les tests d'intégration et d'acceptation</li>
+      <li>Déployer un service</li>
+      <li>Accompagner les utilisateurs</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">Ubiquiti</span>
+      <span class="tag">Routeur 4G</span>
+      <span class="tag">NAT / Redirection de port</span>
+      <span class="tag">Continuité de service</span>
+      <span class="tag">Baie réseau</span>
+      <span class="tag">DECT / VoIP</span>
+      <span class="tag">Supervision réseau</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p>
+</footer>
+
+</body>
+</html>

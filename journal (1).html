@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal de stage | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --surface2: #1c1c27;
+    --accent: #00e5ff; --accent2: #7c6cff;
+    --text: #f0f0f5; --muted: #8888a0; --border: rgba(255,255,255,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
+  .nav-back { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+  .page-header { padding: 120px 2rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .breadcrumb { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .page-tag { display: inline-block; background: rgba(124,108,255,0.1); border: 1px solid rgba(124,108,255,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.5rem; }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; }
+  h1 span { color: var(--accent2); }
+  .page-intro { color: var(--muted); font-size: 1.1rem; max-width: 620px; line-height: 1.8; }
+  .content { max-width: 1100px; margin: 0 auto; padding: 0 2rem 5rem; }
+  .week {
+    border-left: 2px solid var(--border);
+    padding-left: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .week::before {
+    content: '';
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent2);
+    position: absolute;
+    left: -6px; top: 6px;
+  }
+  .week-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent2); margin-bottom: 0.4rem;
+  }
+  .week h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .week p { color: var(--muted); line-height: 1.8; margin-bottom: 0.75rem; }
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="stage2.html">← Retour au stage 2</a>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / <a href="stage2.html">Stage 2</a> / Journal</div>
+  <span class="page-tag">APE Conseil · 2ème année</span>
+  <h1>Journal <span>de stage</span></h1>
+  <p class="page-intro">Compte rendu hebdomadaire de mon stage de 2ème année chez APE Conseil à Rillieux-la-Pape.</p>
+</div>
+
+<div class="content">
+
+  <div class="week">
+    <div class="week-label">Semaine 1 · 5 – 9 janvier</div>
+    <h2>Découverte de l'environnement et premières installations</h2>
+    <p>Mon tuteur m'a confié un serveur physique afin que je puisse découvrir l'environnement informatique de l'entreprise. J'ai réalisé la préparation de postes de travail avec l'installation de Windows 11 Pro, le nettoyage des disques et la mise à jour des pilotes.</p>
+    <p>J'ai découvert le principe du déploiement réseau via PXE et WDS avec des images WIM. Sur le serveur mis à disposition, j'ai installé Windows Server 2025 et configuré le rôle Hyper-V. J'ai créé plusieurs machines virtuelles, dont un contrôleur de domaine et un serveur de fichiers, et créé quelques GPO pour remonter des partages. J'ai également réalisé une première tentative de mise en place d'un serveur RDS, encore en cours de configuration en fin de semaine.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 2 · 12 – 16 janvier</div>
+    <h2>Infrastructure serveur et Active Directory</h2>
+    <p>J'ai poursuivi la mise en place de l'infrastructure serveur : finalisation des machines virtuelles Windows Server (contrôleur de domaine, serveur de fichiers, serveur RDS). J'ai travaillé sur l'Active Directory avec la création d'unités d'organisation, de groupes d'utilisateurs et l'application de stratégies de groupe (GPO) pour automatiser le mappage des lecteurs réseau et la gestion des dossiers personnels.</p>
+    <p>J'ai approfondi la configuration du serveur RDS, testé les connexions bureau à distance et vérifié l'accès aux ressources du domaine depuis une session RDS. En parallèle, j'ai observé le travail des techniciens du support : prise d'appels, analyse des demandes, création de tickets d'intervention et suivi des incidents.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 3 · 19 – 23 janvier</div>
+    <h2>Déploiement de postes clients</h2>
+    <p>J'ai participé au déploiement d'une dizaine de postes de travail pour une entreprise cliente via boot PXE, avec installation de Windows 11 Pro et exécution de scripts automatisés pour supprimer les bloatwares et installer les logiciels nécessaires (suite Microsoft Office notamment).</p>
+    <p>J'ai également contribué à la gestion du matériel : collecte d'informations sur des postes inutilisables pour identifier les composants récupérables, vidage des disques et réinstallation de Windows 10 sur des postes de prêt temporaire. J'ai découvert l'outil djoin pour intégrer un poste hors réseau dans un domaine Active Directory, et ajouté une machine virtuelle Linux à mon projet.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 4 · 26 – 30 janvier</div>
+    <h2>Intervention client et téléphonie IP</h2>
+    <p>J'ai participé à une intervention chez un client : remplacement d'un câble réseau défectueux sur un téléphone IP, visite préventive des postes (vérification espace de stockage, mises à jour Windows et constructeurs). Un dysfonctionnement potentiel a été constaté sur un onduleur — le serveur a été rebranché sur un autre port pour tester la continuité de service.</p>
+    <p>En parallèle, j'ai mis en place un serveur de téléphonie Asterisk avec des contextes ring all et round robin, ainsi qu'une musique d'attente. J'ai aussi découvert la solution 3CX sur machine virtuelle Linux. J'ai assisté un technicien lors de la pré-configuration de bornes Wi-Fi destinées à un client.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 5 · 2 – 6 février</div>
+    <h2>Déploiements, maintenance et support</h2>
+    <p>J'ai continué les activités de préparation et déploiement de postes via PXE, avec configuration de Windows et vérification du bon fonctionnement avant mise à disposition. J'ai réalisé des opérations de maintenance préventive : contrôle de l'espace de stockage, vérification des mises à jour et conformité des configurations.</p>
+    <p>J'ai été régulièrement aux côtés des techniciens du support, en assistant à la résolution d'incidents utilisateurs, à la prise d'appels et au diagnostic. J'ai pris en main leur logiciel de ticketing. Mon tuteur m'a présenté la salle serveurs de l'entreprise, en m'expliquant le rôle de chaque équipement (serveurs physiques, équipements réseau, systèmes d'alimentation sécurisée).</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 6 · 9 – 13 février</div>
+    <h2>Wi-Fi, RAM et clôture du stage</h2>
+    <p>J'ai poursuivi les déploiements et accompagné les techniciens du support. J'ai mis en place une machine virtuelle UniFi pour configurer et administrer une borne Wi-Fi, comprenant le fonctionnement d'un contrôleur centralisé et les étapes de sécurisation d'un réseau Wi-Fi professionnel.</p>
+    <p>J'ai procédé à l'ajout de barrettes de RAM sur deux postes destinés à une entreprise utilisant des logiciels de modélisation 3D, afin d'améliorer les performances machines. Cette dernière semaine m'a permis de consolider mes compétences en déploiement, support technique et gestion d'équipements réseau.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p>
+</footer>
+
+</body>
+</html>
