@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Situation 2 – Renouvellement baie réseau | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="stage2.html">← Retour au stage 2</a>
+</nav>
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / <a href="stage2.html">Stage 2</a> / Situation 2</div>
+  <span class="page-tag">Situation professionnelle 2</span>
+  <h1>Renouvellement équipements <span class="accent">baie réseau client</span></h1>
+  <p class="page-intro">Remplacement de l'infrastructure réseau vieillissante d'un client : installation d'un routeur Ubiquiti, mise en place d'un backup 4G et configuration des règles NAT.</p>
+</div>
+<div class="content">
+
+  <div class="sit-nav">
+    <a href="stage2.html" class="sit-btn">Présentation entreprise</a>
+    <a href="journal.html" class="sit-btn">Journal de stage</a>
+    <a href="situation1.html" class="sit-btn">Situation 1</a>
+    <a href="situation2.html" class="sit-btn active">Situation 2</a>
+    <a href="situation3.html" class="sit-btn">Situation 3</a>
+  </div>
+
+  <!-- CONTEXTE -->
+  <div class="block">
+    <div class="block-title">Contexte</div>
+    <p>Dans le cadre d'un contrat de maintenance, l'entreprise cliente a constaté plusieurs limites liées à son ancienne infrastructure réseau. Les équipements en place étaient vieillissants, peu performants et ne permettaient pas d'assurer une continuité de service optimale en cas de panne Internet.</p>
+    <p>L'intervention a donc consisté à remplacer les anciens équipements par un routeur Ubiquiti plus performant, à intégrer un routeur 4G en backup, à revoir certaines règles NAT pour la gestion des équipements (notamment la borne DECT) et à vérifier la cohérence globale de la baie informatique.</p>
+  </div>
+
+  <!-- BAIE INFORMATIQUE -->
+  <div class="block">
+    <div class="block-title">La baie informatique</div>
+    <p>La baie informatique présentée ci-dessous regroupe les équipements réseau nécessaires au bon fonctionnement du système d'information de l'entreprise. Elle assure la connectivité interne, l'accès à Internet, la téléphonie ainsi que la continuité de service en cas de panne :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Photo : vue globale de la baie informatique du client</div>
+  </div>
+
+  <!-- ROUTEUR UBIQUITI -->
+  <div class="block">
+    <div class="block-title">Routeur Ubiquiti</div>
+    <p>Le routeur Ubiquiti constitue l'élément central du réseau. Il est configuré pour gérer à la fois le réseau local (LAN) et l'accès Internet (WAN).</p>
+    <p>Deux ports sont utilisés pour la connexion WAN, incluant un lien principal et un lien de secours via la 4G. L'un des autres ports du routeur est relié au switch afin de distribuer la connectivité au réseau local de l'entreprise.</p>
+    <p>Une règle de supervision a également été mise en place afin de surveiller l'état du routeur. Cette supervision repose sur une sonde de type ping, permettant de détecter rapidement une indisponibilité du routeur (routeur « down ») et d'agir en conséquence.</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Capture : interface de supervision du routeur Ubiquiti (sonde ping)</div>
+  </div>
+
+  <!-- ROUTEUR 4G -->
+  <div class="block">
+    <div class="block-title">Routeur 4G</div>
+    <p>Le routeur 4G est utilisé comme solution de secours. En cas de panne de la connexion fibre principale, le trafic Internet est automatiquement basculé vers le lien 4G. Cette configuration permet d'assurer une continuité de service et de limiter les interruptions d'activité liées à une perte de connexion Internet.</p>
+  </div>
+
+  <!-- BORNE DECT + NAT -->
+  <div class="block">
+    <div class="block-title">Borne DECT et règle NAT</div>
+    <p>La borne DECT est dédiée à la téléphonie sans fil de l'entreprise.</p>
+    <p>Afin d'éviter tout impact sur le reste du réseau et d'optimiser l'administration de l'équipement, une règle de translation de port (NAT) a été configurée. Cette règle permet un accès plus rapide et plus fluide à l'interface de gestion de la borne, facilitant ainsi sa prise en main et son administration.</p>
+    <p>Exemple (avec fausses IP) :</p>
+    <div class="nat-box">
+      <strong>Résumé de la règle :</strong><br>
+      Tout trafic arrivant sur <strong>185.52.45.23:8888</strong> est redirigé vers<br>
+      👉 <strong>192.168.27.21:443</strong>, depuis n'importe quelle IP, via WAN1.
+    </div>
+    <div class="photo-placeholder" style="margin-top:1rem;"><span class="icon">🖼</span>Capture : règle NAT dans l'interface Ubiquiti</div>
+  </div>
+
+  <!-- SWITCH -->
+  <div class="block">
+    <div class="block-title">Switch</div>
+    <p>Le switch présent dans la baie est un switch non manageable. Son rôle est de distribuer la connexion réseau aux différents équipements du réseau local. Ne disposant pas de fonctionnalités avancées de configuration ou de supervision, il fonctionne de manière simple et autonome, ce qui convient aux besoins actuels de l'infrastructure.</p>
+  </div>
+
+  <!-- COMPÉTENCES -->
+  <div class="block">
+    <div class="block-title">Compétences mobilisées</div>
+
+    <div class="sub-title">Gérer le patrimoine informatique</div>
+    <ul>
+      <li>1 ▸ Recenser et identifier les ressources numériques</li>
+      <li>2 ▸ Exploiter des référentiels, normes et standards adoptés par le prestataire informatique</li>
+      <li>3 ▸ Mettre en place et vérifier les niveaux d'habilitation</li>
+    </ul>
+
+    <div class="sub-title">Répondre aux incidents et aux demandes d'assistance</div>
+    <ul>
+      <li>1 ▸ Collecter, suivre et orienter des demandes</li>
+      <li>2 ▸ Traiter des demandes concernant les services réseau et système</li>
+    </ul>
+
+    <div class="sub-title">Mettre à disposition des utilisateurs un service informatique</div>
+    <ul>
+      <li>1 ▸ Réaliser les tests d'intégration et d'acceptation</li>
+      <li>2 ▸ Déployer un service</li>
+      <li>3 ▸ Accompagner les utilisateurs</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">Ubiquiti</span>
+      <span class="tag">Routeur 4G backup</span>
+      <span class="tag">NAT / Redirection de port</span>
+      <span class="tag">Continuité de service</span>
+      <span class="tag">Baie réseau</span>
+      <span class="tag">DECT / VoIP</span>
+      <span class="tag">Supervision réseau</span>
+    </div>
+  </div>
+
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>

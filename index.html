@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joseph Kittaneh – Portfolio BTS SIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 2rem 4rem;max-width:1100px;margin:0 auto;position:relative;}
+.hero-content{max-width:680px;}
+.hero-tag{display:inline-block;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--accent);font-size:0.78rem;font-weight:500;padding:4px 14px;border-radius:20px;letter-spacing:0.5px;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:1.5rem;}
+.hero h1 span{color:var(--accent);}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:540px;margin-bottom:2.5rem;line-height:1.8;}
+.btn{display:inline-block;padding:11px 24px;border-radius:8px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.2s;}
+.btn-primary{background:var(--accent);color:#000;}
+.btn-primary:hover{background:#33eaff;transform:translateY(-2px);}
+.btn-ghost{border:1px solid var(--border);color:var(--text);margin-left:0.75rem;}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.2);background:var(--surface);}
+.hero-initials{position:absolute;right:0;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,rgba(0,229,255,0.12),rgba(124,108,255,0.12));border:1px solid rgba(0,229,255,0.18);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--accent);}
+.section{padding:4.5rem 2rem;max-width:1100px;margin:0 auto;}
+.section-label{font-size:0.73rem;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:0.6rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:700;letter-spacing:-1px;margin-bottom:0.75rem;color:var(--text);}
+.section-sub{color:var(--muted);max-width:520px;margin-bottom:2.5rem;font-size:1rem;}
+.divider{border:none;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;}
+.bts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.bts-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;transition:border-color 0.3s;}
+.bts-card:hover{border-color:rgba(0,229,255,0.25);}
+.bts-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.6rem;color:var(--accent);}
+.bts-full{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.25rem;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.75rem;}
+.skill-item{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:1rem 1.25rem;display:flex;align-items:center;gap:10px;transition:all 0.2s;}
+.skill-item:hover{border-color:rgba(124,108,255,0.35);background:var(--surface2);}
+.skill-dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);flex-shrink:0;}
+.skill-item span{font-size:0.88rem;font-weight:500;}
+@media(max-width:768px){.hero-initials{display:none;}.bts-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <ul class="nav-links">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#stages">Stages</a></li>
+    <li><a href="#ateliers">Ateliers</a></li>
+    <li><a href="veille.html">Veille</a></li>
+  </ul>
+</nav>
+<div class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">BTS SIO – Option SISR · Lycée La Martinière Duchère</span>
+    <h1>Joseph<br><span>Kittaneh</span></h1>
+    <p class="hero-desc">Passionné par l'administration réseau et la cybersécurité, je me forme à concevoir, déployer et sécuriser des infrastructures informatiques performantes et adaptées aux besoins des entreprises.</p>
+    <a href="#stages" class="btn btn-primary">Voir mes stages</a>
+    <a href="#competences" class="btn btn-ghost">Mes compétences</a>
+  </div>
+  <div class="hero-initials">JK</div>
+</div>
+<hr class="divider">
+<div class="section" id="apropos">
+  <p class="section-label">À propos</p>
+  <h2 class="section-title">Le BTS SIO</h2>
+  <p class="section-sub">Formation de niveau Bac+2 aux métiers de l'informatique, en deux ans avec deux stages en entreprise.</p>
+  <div class="bts-full"><p>Le Brevet de Technicien Supérieur Services Informatiques aux Organisations (BTS SIO) s'adresse à ceux qui souhaitent se former en deux ans aux métiers d'administrateur réseau ou de développeur pour intégrer directement le marché du travail ou continuer des études dans le domaine de l'informatique. Il associe aux enseignements théoriques et professionnels deux stages en entreprise (10 à 11 semaines réparties sur les deux années d'études).</p></div>
+  <div class="bts-grid">
+    <div class="bts-card"><h3>Option SISR</h3><p>Solutions d'Infrastructure, Systèmes et Réseaux. Forme des professionnels des réseaux et équipements informatiques (installation, maintenance, sécurité). En sortant d'un BTS SIO SISR, vous serez capables de gérer et d'administrer le réseau d'une société et d'assurer sa sécurité et sa maintenance.</p></div>
+    <div class="bts-card"><h3>Option SLAM</h3><p>Solutions Logicielles et Applications Métiers. Forme des spécialistes des logiciels : rédaction d'un cahier des charges, formulation des besoins et spécifications, développement et intégration au sein de la société.</p></div>
+  </div>
+</div>
+<hr class="divider">
+<div class="section" id="competences">
+  <p class="section-label">Compétences</p>
+  <h2 class="section-title">Ce que je maîtrise</h2>
+  <p class="section-sub">Compétences techniques développées en formation et en stage.</p>
+  <div class="skills-grid">
+    <div class="skill-item"><div class="skill-dot"></div><span>Administration réseau</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Windows Server</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>PowerShell</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Déploiement PXE / WDS</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Hyper-V / Virtualisation</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Cybersécurité</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Maintenance matérielle</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Support utilisateur</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Active Directory / GPO</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>TCP/IP & réseaux</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>Linux (Debian / Ubuntu)</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span>GLPI / Ticketing</span></div>
+  </div>
+</div>
+<hr class="divider">
+<div class="section" id="stages">
+  <p class="section-label">Stages</p>
+  <h2 class="section-title">Expériences professionnelles</h2>
+  <p class="section-sub">Deux stages réalisés dans le cadre de ma formation BTS SIO.</p>
+  <div class="cards-grid">
+    <a class="card" href="stage1.html"><div class="card-tag">1ère année · 2023</div><h3>Repit Ainay</h3><p>Atelier de réparation d'appareils électroniques. Maintenance matérielle, diagnostics et réparations sur smartphones (iPhone, Samsung), écrans Mac, ordinateurs et tablettes.</p><span class="card-arrow">Voir le détail →</span></a>
+    <a class="card" href="stage2.html"><div class="card-tag">2ème année · 2025</div><h3>APE Conseil</h3><p>ESN spécialisée en infogérance. Déploiement de postes Windows, administration systèmes et réseaux, interventions chez des clients PME.</p><span class="card-arrow">Voir le détail →</span></a>
+  </div>
+</div>
+<hr class="divider">
+<div class="section" id="ateliers">
+  <p class="section-label">Ateliers professionnels</p>
+  <h2 class="section-title">Travaux pratiques</h2>
+  <p class="section-sub">Situations professionnelles réalisées en cours de formation.</p>
+  <div class="cards-grid">
+    <a class="card" href="ap1.html"><div class="card-tag">1ère année</div><h3>Ateliers – 1ère année</h3><p>Installation de GLPI sur Ubuntu et mise en place d'un serveur Web Apache/PHP/MariaDB sur Debian.</p><span class="card-arrow">Voir les ateliers →</span></a>
+    <div class="card disabled"><div class="card-tag">2ème année</div><h3>Ateliers – 2ème année</h3><p>Contenu en cours de rédaction. Cette section sera complétée prochainement.</p><span class="card-arrow" style="color:var(--muted)">En cours…</span></div>
+  </div>
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>

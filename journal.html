@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal de stage | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="stage2.html">← Retour au stage 2</a>
+</nav>
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / <a href="stage2.html">Stage 2</a> / Journal</div>
+  <span class="page-tag purple">APE Conseil · 2ème année</span>
+  <h1>Journal <span class="accent2">de stage</span></h1>
+  <p class="page-intro">Compte rendu hebdomadaire de mon stage de 2ème année chez APE Conseil à Rillieux-la-Pape.</p>
+</div>
+<div class="content">
+
+  <div class="sit-nav">
+    <a href="stage2.html" class="sit-btn">Présentation entreprise</a>
+    <a href="journal.html" class="sit-btn active">Journal de stage</a>
+    <a href="situation1.html" class="sit-btn">Situation 1</a>
+    <a href="situation2.html" class="sit-btn">Situation 2</a>
+    <a href="situation3.html" class="sit-btn">Situation 3</a>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 1 · 5 – 9 janvier</div>
+    <h2>Découverte de l'environnement et premières installations</h2>
+    <p>Au cours de cette première semaine de stage, mon tuteur m'a confié un serveur afin que je puisse m'entraîner et découvrir l'environnement informatique de l'entreprise. J'ai réalisé la préparation de postes de travail avec l'installation de Windows 11 Pro, le nettoyage des disques et la mise à jour des pilotes. J'ai également découvert le principe du déploiement réseau à l'aide de PXE et WDS et des images WIM. Sur le serveur mis à disposition, j'ai installé Windows Server 2025 et configuré le rôle Hyper-V. J'ai créé plusieurs machines virtuelles, dont un contrôleur de domaine et un serveur de fichiers. J'ai pu créer quelques GPO pour remonter des partages. J'ai aussi effectué une première tentative de mise en place d'un serveur RDS, qui est encore en cours de configuration. Cette semaine m'a permis de renforcer mes bases en administration système et virtualisation.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 2 · 12 – 16 janvier</div>
+    <h2>Infrastructure serveur et Active Directory</h2>
+    <p>Au cours de cette deuxième semaine de stage, j'ai poursuivi la mise en place de l'infrastructure serveur débutée la semaine précédente. J'ai finalisé l'installation et la configuration des différentes machines virtuelles sous Windows Server, notamment le contrôleur de domaine, le serveur de fichiers et le serveur de services distants.</p>
+    <p>J'ai continué le travail sur l'Active Directory avec la création et l'organisation des unités d'organisation, des groupes d'utilisateurs et l'application de stratégies de groupe. Ces GPO ont permis d'automatiser la mise à disposition des ressources, notamment le mappage des lecteurs réseau et la gestion des dossiers personnels des utilisateurs du domaine.</p>
+    <p>Cette semaine m'a également permis d'approfondir la configuration du serveur RDS, afin de proposer un environnement de travail centralisé aux utilisateurs. J'ai testé les connexions au bureau à distance et vérifié l'accès aux ressources du domaine depuis une session RDS.</p>
+    <p>En parallèle des activités techniques, j'ai observé le travail des techniciens du support informatique. J'ai assisté à la prise d'appels, à l'analyse des demandes des utilisateurs et à la création de tickets d'intervention. Les techniciens m'ont expliqué le processus de traitement des incidents, la priorisation des demandes et le suivi des interventions jusqu'à leur résolution.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 3 · 19 – 23 janvier</div>
+    <h2>Déploiement de postes clients</h2>
+    <p>Au cours de cette troisième semaine de stage, j'ai participé au déploiement d'une dizaine de postes de travail pour une entreprise cliente. Les installations ont été réalisées via un boot PXE, avec l'installation de Windows 11 Pro, suivie de l'exécution de scripts automatisés permettant de supprimer les applications inutiles et bloatwares et d'installer les logiciels nécessaires, notamment la suite Microsoft Office.</p>
+    <p>En parallèle, j'ai utilisé des scripts similaires sur mon environnement serveur afin de simuler des postes clients et de tester les configurations mises en place.</p>
+    <p>J'ai également contribué à la gestion du matériel informatique, en collectant des informations sur des postes devenus inutilisables afin d'identifier les composants récupérables. Sur des postes de seconde main restitués par les clients, j'ai réalisé le vidage des disques et la réinstallation de Windows 10 dans le cadre de prêts temporaires.</p>
+    <p>Durant cette semaine, j'ai découvert l'outil djoin, permettant à un poste hors réseau de rejoindre un domaine Active Directory, ainsi que l'ajout d'une machine virtuelle Linux à mon projet, en préparation de futurs travaux.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 4 · 26 – 30 janvier</div>
+    <h2>Intervention client et téléphonie IP</h2>
+    <p>Au cours de cette quatrième semaine de stage, j'ai participé à une intervention chez un petit client. Celle-ci a notamment consisté au remplacement d'un câble réseau défectueux utilisé pour un téléphone IP. J'ai également pris part à une visite préventive sur l'ensemble des postes de travail, comprenant la vérification de l'espace de stockage disponible ainsi que le contrôle des mises à jour Windows et constructeurs.</p>
+    <p>Lors de cette intervention, un dysfonctionnement potentiel a été constaté sur un onduleur, qui ne semblait pas prendre le relais correctement en cas de coupure de courant. Afin d'effectuer des tests, le serveur a été branché sur un autre port de l'onduleur pour vérifier son comportement et assurer la continuité de service.</p>
+    <p>En parallèle, j'ai poursuivi le travail sur mon infrastructure locale, avec la mise en place d'un serveur de téléphonie Asterisk. J'ai configuré plusieurs contextes d'appels, dont des scénarios de type ring all et round robin, ainsi qu'une musique d'attente. J'ai également découvert la solution 3CX, installée sur une machine virtuelle Linux, afin de comparer différentes solutions de téléphonie IP.</p>
+    <p>Enfin, j'ai assisté un technicien lors de la pré-configuration de bornes Wi-Fi destinées à être livrées chez un client, ce qui m'a permis de mieux comprendre les étapes de préparation avant déploiement sur site.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 5 · 2 – 6 février</div>
+    <h2>Déploiements, maintenance et support</h2>
+    <p>Au cours de cette cinquième semaine de stage, j'ai continué à participer aux activités de préparation et de déploiement de postes de travail destinés aux clients. J'ai notamment repris des installations de systèmes via démarrage réseau PXE, avec configuration de Windows et vérification du bon fonctionnement des machines avant leur mise à disposition.</p>
+    <p>J'ai également réalisé des opérations de maintenance préventive sur plusieurs postes, consistant à contrôler l'espace de stockage disponible, vérifier les mises à jour et assurer la conformité des configurations.</p>
+    <p>Durant cette semaine, j'ai été régulièrement aux côtés des techniciens du support informatique, en les assistant lors de la résolution de problèmes rencontrés par les utilisateurs. J'ai pu observer la prise d'appels, le diagnostic des incidents et la mise en place de solutions, et j'ai pu prendre en main leur logiciel de ticket, ce qui m'a permis de mieux comprendre la gestion des demandes et le suivi des interventions.</p>
+    <p>Enfin, mon tuteur m'a présenté la salle serveurs de l'entreprise, en m'expliquant le rôle des différents équipements présents, tels que les serveurs physiques, les équipements réseau et les systèmes d'alimentation sécurisée. Cette découverte m'a permis de mieux appréhender l'organisation globale de l'infrastructure informatique.</p>
+  </div>
+
+  <div class="week">
+    <div class="week-label">Semaine 6 · 9 – 13 février</div>
+    <h2>Wi-Fi, RAM et clôture du stage</h2>
+    <p>Au cours de cette sixième semaine de stage, j'ai poursuivi les activités de déploiement et de préparation de postes de travail pour différents clients, notamment via installation et configuration des systèmes avant leur mise en production. J'ai également continué à accompagner les techniciens du support informatique, en assistant aux prises d'appels et aux interventions réalisées pour résoudre les incidents rencontrés par les utilisateurs.</p>
+    <p>Cette semaine, j'ai mis en place une machine virtuelle UniFi afin de configurer et administrer une borne Wi-Fi. Cela m'a permis de comprendre le fonctionnement d'un contrôleur centralisé pour la gestion des équipements réseau sans fil, ainsi que les étapes nécessaires à la création et à la sécurisation d'un réseau Wi-Fi professionnel.</p>
+    <p>Par ailleurs, j'ai procédé à l'ajout de barrettes de mémoire RAM sur deux postes de travail destinés à une entreprise utilisant des logiciels de modélisation 3D. Cette intervention avait pour objectif d'améliorer les performances des machines afin de répondre aux besoins matériels plus exigeants de ces applications.</p>
+    <p>Cette semaine m'a permis de consolider mes compétences en déploiement, en support technique et en gestion d'équipements réseau, tout en intervenant sur des problématiques concrètes liées aux performances et à l'infrastructure.</p>
+  </div>
+
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>

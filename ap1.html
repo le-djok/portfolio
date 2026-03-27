@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ateliers 1ère année | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="index.html">← Retour au portfolio</a>
+</nav>
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / Ateliers professionnels / 1ère année</div>
+  <span class="page-tag">1ère année · Ateliers</span>
+  <h1>AP <span class="accent">1ère Année</span></h1>
+  <p class="page-intro">Situations professionnelles réalisées en première année de BTS SIO SISR : installation de GLPI et mise en place d'un serveur Web.</p>
+</div>
+<div class="content">
+
+  <!-- GLPI -->
+  <div class="block">
+    <div class="block-title">Installation GLPI</div>
+
+    <div class="sub-title">Contexte</div>
+    <p>Dans cet atelier de professionnalisation, nous avons appris à installer et à utiliser GLPI sur un serveur GNU/Linux, plus particulièrement Ubuntu. Afin de nous initier au système de ticketing qui est très utilisé dans le monde de l'entreprise.</p>
+
+    <div class="sub-title">Objectifs</div>
+    <p>Chaque entreprise dispose d'un parc informatique plus ou moins conséquent. Ce parc nécessite une gestion (inventaire, tâches administratives…) à distance ainsi que d'une plateforme d'assistance fonctionnant sur la base de signalement d'incident. Dans le cadre de cette gestion, mise en place d'un logiciel libre de gestion de parc informatique : GLPI.</p>
+
+    <div class="sub-title">Environnement technologique</div>
+    <p>Le logiciel GLPI sera installé sur une machine virtuelle Ubuntu 16. Le logiciel GLPI fonctionne avec une base de données ainsi qu'un serveur WEB (gestion par application WEB) : utilisation des services complémentaires : un serveur WEB Apache ; un serveur de base de données MySQL et un interpréteur PHP.</p>
+    <div class="env-grid">
+      <div class="env-tag"><div class="env-dot"></div>Ubuntu 16 (VM)</div>
+      <div class="env-tag"><div class="env-dot"></div>Apache (serveur Web)</div>
+      <div class="env-tag"><div class="env-dot"></div>MySQL</div>
+      <div class="env-tag"><div class="env-dot"></div>PHP</div>
+      <div class="env-tag"><div class="env-dot"></div>GLPI</div>
+    </div>
+
+    <div class="sub-title">Réalisation</div>
+    <ul>
+      <li>Mise à jour des ressources paquets de la machine</li>
+      <li>Installation des services complémentaires (Apache, MySQL, PHP)</li>
+      <li>Installation de GLPI</li>
+      <li>Mise en service du logiciel via navigateur WEB (création utilisateur et parc informatique)</li>
+      <li>Gestion des tickets d'incidents</li>
+    </ul>
+
+    <a class="doc-link" href="docs/Installation_GLPI.pdf">📄 Documentation – Installation GLPI (PDF)</a>
+    <p class="doc-note">À remplacer par votre fichier PDF (converti depuis le .odt d'origine)</p>
+
+    <div class="sub-title">Compétences mobilisées</div>
+    <ul>
+      <li><strong>Gérer le patrimoine informatique</strong> : recenser et identifier les ressources numériques · mettre en place et vérifier les niveaux d'habilitation associés à un service</li>
+      <li><strong>Mettre à disposition des utilisateurs un service informatique</strong> : réaliser les tests d'intégration et d'acceptation · déployer un service · accompagner les utilisateurs dans la mise en place d'un service</li>
+      <li><strong>Répondre aux incidents et aux demandes d'assistance et d'évolution</strong> : collecter, suivre et orienter des demandes · traiter des demandes concernant les services réseau et système, applicatifs · traiter des demandes concernant les applications</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">Linux Ubuntu</span>
+      <span class="tag">GLPI</span>
+      <span class="tag">Apache</span>
+      <span class="tag">MySQL</span>
+      <span class="tag">PHP</span>
+      <span class="tag">Ticketing</span>
+    </div>
+  </div>
+
+  <!-- SERVEUR WEB -->
+  <div class="block">
+    <div class="block-title">Installation Serveur Web</div>
+
+    <div class="sub-title">Contexte</div>
+    <p>Dans le cadre d'AP Support &amp; Système lors de la 1ère année de BTS SIO option SISR : installation et mise en service d'un serveur HTTP à destination d'une entreprise.</p>
+
+    <div class="sub-title">Objectifs</div>
+    <p>Une entreprise disposant d'un service en ligne (site vitrine, application WEB…) dépend d'un serveur HTTP permettant l'offre de service ainsi que la mise à jour des informations. Ce serveur doit être disponible à distance afin que les collaborateurs puissent le modifier à tout moment. Dans le cadre de ce service : installation et mise en service d'un serveur HTTP.</p>
+
+    <div class="sub-title">Environnement technologique</div>
+    <p>Le serveur HTTP sera une machine virtuelle Debian-Server 10. L'accès au serveur se fera via une machine virtuelle Debian-Client 10. Le fonctionnement du serveur nécessite différents outils : un serveur WEB Apache ; un serveur de base de données MariaDB avec l'interface phpMyAdmin ; un interpréteur PHP. La gestion à distance des applications disponibles sur le serveur HTTP nécessite un outil de transfert de fichiers : serveur FTP ProFTPD.</p>
+    <div class="env-grid">
+      <div class="env-tag"><div class="env-dot"></div>Debian Server 10 (VM serveur)</div>
+      <div class="env-tag"><div class="env-dot"></div>Debian Client 10 (VM client)</div>
+      <div class="env-tag"><div class="env-dot"></div>Apache</div>
+      <div class="env-tag"><div class="env-dot"></div>MariaDB + phpMyAdmin</div>
+      <div class="env-tag"><div class="env-dot"></div>PHP</div>
+      <div class="env-tag"><div class="env-dot"></div>ProFTPD</div>
+    </div>
+
+    <div class="sub-title">Réalisation</div>
+    <p>La mise en place de serveurs dans le cadre d'une entreprise est un point essentiel. Chaque collaborateur doit être capable d'accéder aux applications des différents serveurs de manière fiable et sécurisée afin de garantir l'efficacité des services proposés. Je pense que pouvoir proposer ce genre de services aux clients est essentiel pour un professionnel.</p>
+
+    <a class="doc-link" href="docs/Installation_Serveur_Web.pdf">📄 Documentation – Installation Serveur Web (PDF)</a>
+    <p class="doc-note">À remplacer par votre fichier PDF (converti depuis le .odt d'origine)</p>
+
+    <div class="sub-title">Compétences mobilisées</div>
+    <ul>
+      <li><strong>Développer la présence en ligne de l'organisation</strong> : participer à l'évolution d'un site Web exploitant les données de l'organisation</li>
+      <li><strong>Mettre à disposition des utilisateurs un service informatique</strong> : réaliser les tests d'intégration et d'acceptation d'un service · déployer un service</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">Linux Debian</span>
+      <span class="tag">Apache</span>
+      <span class="tag">MariaDB</span>
+      <span class="tag">phpMyAdmin</span>
+      <span class="tag">PHP</span>
+      <span class="tag">ProFTPD</span>
+      <span class="tag">Serveur Web</span>
+    </div>
+  </div>
+
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Situation 3 – Déploiement postes | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="stage2.html">← Retour au stage 2</a>
+</nav>
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / <a href="stage2.html">Stage 2</a> / Situation 3</div>
+  <span class="page-tag">Situation professionnelle 3</span>
+  <h1>Déploiement de postes <span class="accent">Windows 11 Pro</span></h1>
+  <p class="page-intro">Déploiement d'une trentaine de postes informatiques pour des clients PME : boot PXE, partitionnement, installation Windows 11 Pro et configuration automatisée par script PowerShell.</p>
+</div>
+<div class="content">
+
+  <div class="sit-nav">
+    <a href="stage2.html" class="sit-btn">Présentation entreprise</a>
+    <a href="journal.html" class="sit-btn">Journal de stage</a>
+    <a href="situation1.html" class="sit-btn">Situation 1</a>
+    <a href="situation2.html" class="sit-btn">Situation 2</a>
+    <a href="situation3.html" class="sit-btn active">Situation 3</a>
+  </div>
+
+  <!-- CONTEXTE -->
+  <div class="block">
+    <div class="block-title">Contexte</div>
+    <p>Dans le cadre de mon stage chez APE Conseil, j'ai participé au déploiement d'une trentaine de postes informatiques pour des clients variés, principalement des PME. L'objectif était de livrer des machines prêtes à l'emploi, configurées selon les besoins du client, en suivant une procédure standardisée en plusieurs étapes.</p>
+    <div class="stats-row">
+      <div class="stat"><div class="num">~30</div><div class="desc">Postes déployés</div></div>
+      <div class="stat"><div class="num">PME</div><div class="desc">Type de clients</div></div>
+      <div class="stat"><div class="num">Win 11</div><div class="desc">OS déployé</div></div>
+    </div>
+  </div>
+
+  <!-- ÉTAPES -->
+  <div class="block">
+    <div class="block-title">Procédure de déploiement</div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Boot PXE</h3>
+        <p>Démarrage du PC sur le réseau pour lancer l'environnement de déploiement. Lorsque le boot PXE n'était pas activé par défaut, j'intervenais dans le BIOS/UEFI pour l'activer manuellement.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Partitionnement avec Diskpart</h3>
+        <p>Suppression des partitions existantes via les commandes <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:0.85rem;">select disk</code> et <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:0.85rem;">clean</code> pour repartir sur une base propre. Certains disques n'apparaissaient pas dans Diskpart, ce qui nécessitait une activation dans le BIOS.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Installation de Windows 11 Pro</h3>
+        <p>Déploiement du système d'exploitation via l'environnement PXE/WDS mis en place par l'entreprise.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Exécution du script PowerShell</h3>
+        <p>Lancement d'un script d'automatisation complet qui configure entièrement la machine en une seule exécution :</p>
+        <ul style="margin-top:0.5rem;">
+          <li>Suppression des bloatwares (Cortana, Xbox, applications tierces…)</li>
+          <li>Configuration de Microsoft Edge avec Google comme moteur de recherche et page d'accueil par défaut</li>
+          <li>Installation de Microsoft Office, Teams, Adobe Reader, 7-Zip, TeamViewer QuickSupport, PowerToys, Process Explorer, Everything Search</li>
+          <li>Activation de Windows via la clé OEM présente dans le BIOS</li>
+          <li>Renommage automatique du PC par son numéro de série BIOS</li>
+          <li>Création d'un point de restauration système</li>
+          <li>Création d'un compte utilisateur local administrateur</li>
+          <li>Installation des outils constructeurs selon le fabricant (Dell Command Update, HP Image Assistant ou Lenovo System Update)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIFFICULTÉS -->
+  <div class="block">
+    <div class="block-title">Difficultés rencontrées et solutions apportées</div>
+
+    <div class="sub-title">Boot PXE inactif dans le BIOS</div>
+    <p>Sur certains PC, le boot PXE n'était pas activé par défaut. Il fallait accéder au BIOS/UEFI au démarrage pour l'activer manuellement avant de pouvoir lancer le déploiement réseau.</p>
+
+    <div class="sub-title">Disque non détecté dans Diskpart</div>
+    <p>Sur certains modèles, le disque dur ou SSD n'apparaissait pas dans Diskpart. La solution consistait à activer le contrôleur de stockage dans les paramètres BIOS (passage de mode RAID/RST à AHCI ou activation du disque dans la configuration UEFI).</p>
+
+    <div class="sub-title">Accès BIOS impossible – solution de contournement</div>
+    <div class="alert-block">
+      <div class="alert-title">Cas particulier : BIOS verrouillé ou inaccessible</div>
+      <p>Lorsque le boot PXE ou le disque était inaccessible et que l'intervention BIOS s'avérait impossible, nous adoptions une solution de contournement : démarrer jusqu'au bureau Windows existant, se connecter au serveur FTP de l'entreprise, télécharger et exécuter le script directement. Cette approche permettait de conserver le bénéfice de l'automatisation même sans réinstallation complète du système.</p>
+    </div>
+  </div>
+
+  <!-- COMPÉTENCES -->
+  <div class="block">
+    <div class="block-title">Compétences mobilisées</div>
+
+    <div class="sub-title">Gérer le patrimoine informatique</div>
+    <ul>
+      <li>1 ▸ Recenser et identifier les ressources numériques</li>
+      <li>3 ▸ Mettre en place et vérifier les niveaux d'habilitation</li>
+    </ul>
+
+    <div class="sub-title">Répondre aux incidents et aux demandes d'assistance</div>
+    <ul>
+      <li>2 ▸ Traiter des demandes concernant les services réseau et système</li>
+    </ul>
+
+    <div class="sub-title">Mettre à disposition des utilisateurs un service informatique</div>
+    <ul>
+      <li>1 ▸ Réaliser les tests d'intégration et d'acceptation</li>
+      <li>2 ▸ Déployer un service</li>
+      <li>3 ▸ Accompagner les utilisateurs</li>
+    </ul>
+
+    <div class="sub-title">Organiser son développement professionnel</div>
+    <ul>
+      <li>1 ▸ Mettre en place son environnement d'apprentissage</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">PowerShell</span>
+      <span class="tag">Boot PXE / WDS</span>
+      <span class="tag">Diskpart</span>
+      <span class="tag">Windows 11 Pro</span>
+      <span class="tag">BIOS / UEFI</span>
+      <span class="tag">Scripting</span>
+      <span class="tag">Déploiement</span>
+      <span class="tag">FTP</span>
+    </div>
+  </div>
+
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>

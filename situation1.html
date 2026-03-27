@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Situation 1 – Infrastructure Windows Server | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="stage2.html">← Retour au stage 2</a>
+</nav>
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / <a href="stage2.html">Stage 2</a> / Situation 1</div>
+  <span class="page-tag">Situation professionnelle 1</span>
+  <h1>Déploiement Infrastructure <span class="accent">Windows Server</span></h1>
+  <p class="page-intro">Mise en place complète d'une infrastructure virtualisée simulant une petite entreprise : domaine Active Directory, partages réseau, GPO et serveur Bureau à distance.</p>
+</div>
+<div class="content">
+
+  <div class="sit-nav">
+    <a href="stage2.html" class="sit-btn">Présentation entreprise</a>
+    <a href="journal.html" class="sit-btn">Journal de stage</a>
+    <a href="situation1.html" class="sit-btn active">Situation 1</a>
+    <a href="situation2.html" class="sit-btn">Situation 2</a>
+    <a href="situation3.html" class="sit-btn">Situation 3</a>
+  </div>
+
+  <!-- CONTEXTE -->
+  <div class="block">
+    <div class="block-title">Contexte</div>
+    <p>Dans le cadre de mon stage, j'ai participé au déploiement complet d'une infrastructure informatique simulant une petite entreprise. À partir d'un serveur physique Dell, j'ai installé Windows Server 2025 et configuré un environnement virtualisé avec Hyper-V. J'ai mis en place un domaine Active Directory avec les services DNS et DHCP, puis déployé plusieurs machines virtuelles intégrées au domaine. Des groupes utilisateurs ont été créés afin de gérer les droits d'accès aux ressources partagées, complétés par des GPO pour automatiser le mapping des lecteurs réseau et la gestion des dossiers personnels. Enfin, un service Bureau à distance (RDS) a été configuré afin de permettre aux utilisateurs d'accéder à un environnement de travail centralisé et sécurisé.</p>
+  </div>
+
+  <!-- SERVEUR PHYSIQUE -->
+  <div class="block">
+    <div class="block-title">Serveur physique</div>
+    <p>Le serveur physique sur lequel l'infrastructure virtuelle sera présente :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Photo : le serveur physique Dell</div>
+  </div>
+
+  <!-- INSTALLATION OS + HYPER-V -->
+  <div class="block">
+    <div class="block-title">Installation de Windows Server 2025 et Hyper-V</div>
+    <p>Vidage des disques et choix de l'OS Windows Server 2025, puis installation du service Hyper-V :</p>
+    <div class="photo-grid-2">
+      <div class="photo-placeholder"><span class="icon">🖼</span>Vidage des disques et choix de l'OS Windows Server 2025</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Installation du service Hyper-V</div>
+    </div>
+  </div>
+
+  <!-- SWITCH VIRTUEL + VMs -->
+  <div class="block">
+    <div class="block-title">Switch virtuel et machines virtuelles</div>
+    <p>Création d'un switch virtuel de type "Externe" afin que toutes les machines virtuelles ainsi que le serveur hôte communiquent entre eux :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Création du switch virtuel de type "Externe"</div>
+    <p style="margin-top:1rem;">Création des 4 machines virtuelles Windows Server 2025 ainsi que deux machines Windows 11 client :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Liste des 4 VMs Windows Server 2025 + 2 clients Windows 11</div>
+  </div>
+
+  <!-- ACTIVE DIRECTORY / DHCP / DNS -->
+  <div class="block">
+    <div class="block-title">Active Directory, DHCP et DNS (DCCLIENT25)</div>
+    <p>Sur DCCLIENT25, on installe le service Active Directory et crée notre domaine. On installe aussi DHCP et on crée une étendue qui attribuera une adresse dynamique à tous les postes de notre mini réseau. On installe aussi DNS afin que tous les postes du réseau puissent résoudre leurs noms de machines entre eux.</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Configuration Active Directory, DHCP et DNS sur DCCLIENT25</div>
+  </div>
+
+  <!-- UO + GROUPES -->
+  <div class="block">
+    <div class="block-title">Unités d'organisation et groupes utilisateurs</div>
+    <p>Création d'une OU "Services" contenant 4 groupes représentant les différents services d'une entreprise. Chaque groupe contenant les utilisateurs de ce service :</p>
+    <div class="photo-grid-2">
+      <div class="photo-placeholder"><span class="icon">🖼</span>OU "Services" avec les 4 groupes</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Détail des groupes et utilisateurs</div>
+    </div>
+    <p style="margin-top:1rem;">Tous ces utilisateurs sont aussi stockés dans une OU nommée "Utilisateurs" et c'est à celle-ci qu'on liera nos GPO :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>OU "Utilisateurs" liée aux GPO</div>
+  </div>
+
+  <!-- PARTAGES + GPO -->
+  <div class="block">
+    <div class="block-title">Partages réseau et GPO (SRVAPPLI25)</div>
+    <p>Sur SRVAPPLI25, on formate un disque "D:" dans lequel seront présents les partages de dossiers :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Formatage du disque D: sur SRVAPPLI25</div>
+    <p style="margin-top:1rem;">On partage chaque dossier et on autorise la modification aux bons groupes :</p>
+    <div class="photo-grid-2">
+      <div class="photo-placeholder"><span class="icon">🖼</span>Partage des dossiers avec droits par groupe (1)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Partage des dossiers avec droits par groupe (2)</div>
+    </div>
+    <p style="margin-top:1rem;">On crée donc 4 GPO qui vont remonter automatiquement les dossiers pour chaque utilisateur du bon groupe en mappant un lecteur :</p>
+    <div class="photo-grid-2">
+      <div class="photo-placeholder"><span class="icon">🖼</span>GPO mappage lecteur réseau (1)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>GPO mappage lecteur réseau (2)</div>
+    </div>
+    <p style="margin-top:1rem;">On crée aussi une GPO qui remontera un dossier perso pour tout utilisateur du domaine qui s'identifie :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>GPO dossier personnel utilisateur</div>
+    <p style="margin-top:1rem;">On partage le dossier et on y donne les bons droits :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Partage dossier perso avec droits</div>
+    <p style="margin-top:1rem;">Dans la même GPO, on redirige aussi le dossier Documents vers le partage perso :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Redirection dossier Documents vers le partage perso</div>
+    <p style="margin-top:1rem;">À la connexion d'un utilisateur, on voit bien que le dossier de son service remonte ainsi qu'un dossier perso à son nom :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Résultat à la connexion : lecteur service + dossier perso</div>
+  </div>
+
+  <!-- RDS -->
+  <div class="block">
+    <div class="block-title">Serveur Bureau à distance – RDS25</div>
+    <p>Sur RDS25, une fois que le service de Bureau à Distance est installé, on modifie les propriétés de déploiement en indiquant le mode de déploiement par utilisateur et en déclarant notre serveur comme serveur de licence :</p>
+    <div class="photo-grid-2">
+      <div class="photo-placeholder"><span class="icon">🖼</span>Propriétés déploiement RDS – mode par utilisateur</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Déclaration du serveur de licence</div>
+    </div>
+    <p style="margin-top:1rem;">Création de la Collection, en indiquant le serveur hôte de session et les utilisateurs associés à cette collection :</p>
+    <div class="photo-grid-2">
+      <div class="photo-placeholder"><span class="icon">🖼</span>Création de la Collection RDS (1)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Création de la Collection RDS (2)</div>
+    </div>
+    <p style="margin-top:1rem;">Les utilisateurs peuvent maintenant se connecter au Serveur RDS et accéder à leur session perso. On voit que les bureaux ne se mélangent pas – un utilisateur voit son propre bureau et un autre le sien :</p>
+    <div class="photo-placeholder"><span class="icon">🖼</span>Connexion utilisateur RDS – bureau personnalisé</div>
+    <p style="margin-top:1rem;">Depuis le serveur RDS, on peut accéder aux connexions et voir les utilisateurs en cours de connexion et qui étaient connectés :</p>
+    <div class="photo-grid-3">
+      <div class="photo-placeholder"><span class="icon">🖼</span>Vue des sessions actives sur le serveur RDS (1)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Vue des sessions actives (2)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Vue des sessions actives (3)</div>
+    </div>
+    <p style="margin-top:1rem;">On peut donc mettre à disposition des dossiers ou des applications métiers de plusieurs manières : en mettant à disposition dans le dossier "Public" ou bien en publiant une RemoteApp depuis la collection sur le Serveur RDS.</p>
+  </div>
+
+  <!-- SCRIPT DÉPLOIEMENT -->
+  <div class="block">
+    <div class="block-title">Script de simulation déploiement poste client</div>
+    <p>Création d'un script stocké sur le serveur de fichiers dans le but d'une simulation de déploiement de poste pour client. Un script qui renomme le PC, supprime des apps inutiles comme Xbox app, et marque le PC comme "déployé" dans l'éditeur de registre.</p>
+    <div class="photo-grid-4">
+      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 1)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 2)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 3)</div>
+      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 4)</div>
+    </div>
+  </div>
+
+  <!-- COMPÉTENCES -->
+  <div class="block">
+    <div class="block-title">Compétences mobilisées</div>
+
+    <div class="sub-title">Gérer le patrimoine informatique</div>
+    <ul>
+      <li>1 ▸ Recenser et identifier les ressources numériques</li>
+      <li>3 ▸ Mettre en place et vérifier les niveaux d'habilitation</li>
+      <li>4 ▸ Vérifier les conditions de continuité d'un service</li>
+      <li>5 ▸ Gérer des sauvegardes</li>
+    </ul>
+
+    <div class="sub-title">Répondre aux incidents et aux demandes d'assistance</div>
+    <ul>
+      <li>2 ▸ Traiter des demandes concernant les services réseau et système</li>
+    </ul>
+
+    <div class="sub-title">Travailler en mode projet</div>
+    <ul>
+      <li>1 ▸ Analyser les objectifs et les modalités d'organisation d'un projet</li>
+      <li>2 ▸ Planifier les activités</li>
+    </ul>
+
+    <div class="sub-title">Mettre à disposition des utilisateurs un service informatique</div>
+    <ul>
+      <li>1 ▸ Réaliser les tests d'intégration et d'acceptation</li>
+      <li>2 ▸ Déployer un service</li>
+      <li>3 ▸ Accompagner les utilisateurs</li>
+    </ul>
+
+    <div class="sub-title">Organiser son développement professionnel</div>
+    <ul>
+      <li>1 ▸ Mettre en place son environnement d'apprentissage</li>
+      <li>4 ▸ Développer son projet professionnel</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">Windows Server 2025</span>
+      <span class="tag">Hyper-V</span>
+      <span class="tag">Active Directory</span>
+      <span class="tag">DHCP</span>
+      <span class="tag">DNS</span>
+      <span class="tag">GPO</span>
+      <span class="tag">RDS</span>
+      <span class="tag">Partages réseau</span>
+      <span class="tag">Virtualisation</span>
+      <span class="tag">PowerShell</span>
+    </div>
+  </div>
+
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>
