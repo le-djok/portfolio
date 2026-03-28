@@ -1,0 +1,242 @@
+=============================================================
+  CONTEXTE POUR CLAUDE CODE — PAGE AP2 (2ÈME ANNÉE)
+  Fichier à fournir tel quel à Claude Code
+=============================================================
+
+MISSION :
+---------
+Crée une page HTML "ap2.html" pour le portfolio de Joseph Kittaneh,
+dans le MÊME style, structure et design que la page existante :
+https://le-djok.github.io/portfolio/ap1.html
+
+La page ap1.html est la référence absolue de design. Reprends :
+- la même navbar (logo JK + lien retour portfolio)
+- le même fil d'ariane (Portfolio / Ateliers professionnels / 2ème année)
+- le même header (badge "2ème année · Ateliers" + titre h1 + sous-titre)
+- les mêmes cards par atelier (structure identique)
+- le même footer
+- les mêmes couleurs, polices, espacements, animations CSS
+- le même comportement responsive
+
+Les deux fichiers (ap1.html et ap2.html) doivent être visuellement cohérents.
+
+
+=============================================================
+  CONTENU À INTÉGRER — 2 ATELIERS
+=============================================================
+
+--------------------------------------------------------------
+ATELIER 1 — Mise en place d'un Cluster Proxmox (Travail de groupe)
+--------------------------------------------------------------
+
+TITRE AFFICHÉ : "Cluster Proxmox – Haute Disponibilité"
+
+CONTEXTE :
+Dans le cadre du BTS SIO SISR 2ème année, nous avons mis en place
+une infrastructure de virtualisation haute disponibilité avec Proxmox VE.
+Le projet a été réalisé en trinôme : Joseph Kittaneh, Samuel Timothée
+et Mehdi Benabdallah. Chaque étudiant disposait d'un serveur physique
+dédié (nœud du cluster), permettant de constituer une grappe de trois
+hôtes Proxmox interconnectés.
+
+OBJECTIFS :
+- Installer et configurer Proxmox VE sur un serveur physique.
+- Réaliser les premières manipulations (découverte de l'interface web,
+  exploration des stockages local et local-lvm).
+- Créer et configurer une machine virtuelle Debian 13 complète
+  (installation OS, connexion SSH, transfert FTP).
+- Créer un modèle (template) et cloner des machines virtuelles
+  (clone lié et clone complet — thin provisioning).
+- Regrouper les 3 serveurs en un cluster Proxmox unifié.
+- Ajouter un stockage NFS partagé via un serveur TrueNAS.
+- Configurer et démontrer la Haute Disponibilité (HA) :
+  migration automatique des VMs lors d'une panne de nœud.
+- Gérer les utilisateurs, les pools de ressources et les permissions
+  (rôle "Role_Admin_Partiel" sur chaque pool utilisateur).
+
+ENVIRONNEMENT TECHNOLOGIQUE (technologies sous forme de badges/tags) :
+- Proxmox VE
+- Debian 13
+- TrueNAS (NFS)
+- Haute Disponibilité (HA)
+- SSH / FTP
+- Cluster (3 nœuds)
+- pfSense (non, ne pas inclure ici)
+
+RÉALISATION (liste des étapes clés) :
+Partie individuelle :
+  • Installation de Proxmox VE sur serveur physique (clé USB Rufus)
+  • Configuration réseau : IP statique 172.30.11.221, hostname pve221.lmdsio.com
+  • Exploration de l'interface : stockage local (68 Go, ISOs) et local-lvm (139 Go, VMs)
+  • Téléchargement de l'ISO Debian 13 directement depuis Proxmox
+  • Création d'une VM Debian 13 (ID 221001, 32 Go, agent QEMU activé)
+  • Installation de Debian 13 sans interface graphique, avec SSH
+  • Connexion SSH et transfert de fichier par FTP (vsftpd + WinSCP)
+  • Conversion de la VM en modèle (template) immuable
+  • Clonage : clone lié (léger, shared blocks) et clone complet (indépendant)
+
+Partie groupe (trinôme) :
+  • Création du cluster "cluster-skjb" depuis pve221, jonction de pve203 et pve213
+  • Migration à chaud d'une VM entre nœuds (interruption ping < 5 secondes)
+  • Ajout du stockage NFS TrueNAS partagé entre les 3 nœuds
+  • Migration avec stockage partagé : quelques secondes seulement (seul l'état migre)
+  • Configuration HA avec priorités : pve203 > pve213 > pve221
+  • Test 1 : arrêt propre de pve203 → migration automatique vers pve213
+  • Test 2 : panne brutale simulée → redémarrage automatique des VMs sur pve213 (~1 min)
+  • Création d'utilisateurs Proxmox, groupe, pools de ressources
+  • Rôle "Role_Admin_Partiel" avec droits VM.Allocate, VM.Clone, VM.Console, VM.PowerMgmt, etc.
+  • Vérification : chaque utilisateur voit uniquement ses VMs et son pool
+  • Ajout du droit VM.Migrate pour permettre la migration par les utilisateurs
+
+LIEN DOCUMENT (si tu veux ajouter un bouton comme sur ap1.html) :
+  Pas de PDF dispo pour l'instant — ne pas mettre de bouton document.
+
+COMPÉTENCES MOBILISÉES (même format que ap1.html) :
+  - Gérer le patrimoine informatique : recenser et identifier les ressources
+    numériques, assurer la disponibilité d'une infrastructure de virtualisation
+  - Mettre à disposition des utilisateurs un service informatique :
+    déployer et configurer des services de virtualisation (Proxmox VE),
+    mettre en œuvre la haute disponibilité, tester l'intégration et l'acceptation
+  - Travailler en mode projet : coordonner les actions au sein d'un trinôme,
+    respecter les étapes et livrables du projet cluster
+  - Gérer les droits et habilitations : créer des utilisateurs et des rôles
+    personnalisés, configurer les permissions par pool de ressources
+
+TAGS FINAUX (dans le même style que ap1.html) :
+Proxmox VE · Debian 13 · TrueNAS · NFS · SSH · Cluster · Haute Disponibilité · Virtualisation
+
+
+--------------------------------------------------------------
+ATELIER 2 — Pare-feu pfSense et VPN OpenVPN
+--------------------------------------------------------------
+
+TITRE AFFICHÉ : "pfSense & VPN OpenVPN"
+
+CONTEXTE :
+Dans le cadre de l'AP réseau/sécurité en BTS SIO SISR 2ème année,
+mise en place d'une infrastructure réseau sécurisée composée d'un
+pare-feu pfSense et d'un tunnel VPN basé sur OpenVPN.
+L'environnement s'appuie sur des machines virtuelles déployées dans
+le réseau du lycée, avec une architecture segmentée par VLANs.
+L'interface WAN de pfSense est connectée au VLAN 992 (réseau Box 2 :
+192.168.1.0/24) et l'interface LAN au VLAN 213 (172.26.213.0/24).
+Un serveur Debian héberge Apache sur ce réseau LAN.
+
+OBJECTIFS :
+- Installer et configurer pfSense comme pare-feu/routeur entre le
+  réseau interne et Internet.
+- Mettre en place la redirection de ports (NAT/Port Forward) pour
+  exposer un serveur web Apache depuis l'extérieur.
+- Créer une infrastructure PKI complète (autorité de certification CA,
+  certificat serveur, certificat client).
+- Configurer un serveur OpenVPN sur pfSense.
+- Définir les règles de pare-feu nécessaires au tunnel VPN.
+- Tester la connectivité VPN depuis un poste externe (ping + SSH).
+- Analyser le trafic avec Wireshark pour valider le chiffrement.
+
+ENVIRONNEMENT TECHNOLOGIQUE (technologies sous forme de badges/tags) :
+- pfSense (pare-feu/routeur)
+- OpenVPN
+- PKI / SSL/TLS
+- Apache (serveur web)
+- Debian
+- Wireshark
+- VLAN (992 WAN, 213 LAN)
+- NAT / Port Forward
+
+RÉALISATION (liste des étapes clés) :
+Partie 1 — Configuration du pare-feu pfSense :
+  • Accès à l'interface d'administration pfSense (HTTPS, port 443)
+  • Configuration de l'interface WAN : VLAN 992, IP via DHCP (Box 2)
+  • Configuration de l'interface LAN : VLAN 213, IP fixe 172.26.213.250/24
+  • Création des règles de pare-feu de base (politique deny all + allow explicites)
+  • Mise en place du NAT Port Forward : port 26213 (WAN) → port 80 Apache (172.26.213.x)
+  • Vérification de l'accès au serveur Apache depuis l'extérieur
+
+Partie 2 — Mise en place du VPN OpenVPN (7 étapes) :
+  • Étape 1 : Création de l'autorité de certification (CA) dans System → Certificates
+  • Étape 2 : Création du certificat serveur OpenVPN (type "Server Certificate")
+  • Étape 3 : Création d'un utilisateur VPN et de son certificat client (System → User Manager)
+  • Étape 4 : Configuration du serveur OpenVPN (protocole UDP, port 21394, tunnel 10.10.213.0/24,
+    réseau local 172.26.213.0/24, topology subnet, sans redirect gateway)
+  • Étape 5 : Export de la configuration client via le package openvpn-client-export
+    (fichier .ovpn avec certificats intégrés)
+  • Étape 6 : Création des règles de pare-feu :
+    - Règle WAN : autoriser UDP 21394 depuis any (connexion VPN entrante)
+    - Règle OpenVPN : autoriser SSH vers 172.26.213.80 (serveur Apache)
+    - Règle OpenVPN : autoriser ICMP (ping) vers 172.26.213.0/24
+  • Étape 7 : Tests de connexion VPN :
+    - Connexion client OpenVPN avec attribution IP tunnel (10.10.213.x)
+    - Route automatique vers 172.26.213.0/24
+    - Ping réussi vers machines du réseau interne
+    - Connexion SSH réussie au serveur Apache via le tunnel VPN
+    - Analyse Wireshark : trafic en clair sur interface tunnel, paquets UDP chiffrés sur Ethernet
+
+LIEN DOCUMENT :
+  Pas de PDF dispo pour l'instant — ne pas mettre de bouton document.
+
+COMPÉTENCES MOBILISÉES :
+  - Gérer le patrimoine informatique : identifier et sécuriser les accès
+    au réseau par une architecture pare-feu/VPN
+  - Mettre à disposition des utilisateurs un service informatique :
+    déployer un accès VPN sécurisé pour les utilisateurs distants,
+    tester et valider la connectivité du service
+  - Répondre aux incidents et demandes d'évolution : configurer les règles
+    de filtrage, diagnostiquer et résoudre les problèmes de connectivité réseau
+  - Cybersécurité : mettre en œuvre une PKI, sécuriser les échanges
+    par chiffrement TLS, analyser le trafic réseau (Wireshark)
+
+TAGS FINAUX :
+pfSense · OpenVPN · VPN · PKI · SSL/TLS · Pare-feu · NAT · Apache · Wireshark · Sécurité réseau
+
+
+=============================================================
+  INFORMATIONS GÉNÉRALES DE LA PAGE
+=============================================================
+
+TITRE DE LA PAGE (balise <title>) : "AP 2ème Année | Joseph Kittaneh"
+TITRE H1 : "AP 2ème Année"
+SOUS-TITRE : "Situations professionnelles réalisées en deuxième année de BTS SIO SISR :
+             mise en place d'un cluster Proxmox haute disponibilité et configuration
+             d'un pare-feu pfSense avec VPN OpenVPN."
+
+BADGE HEADER : "2ème année · Ateliers"
+
+FIL D'ARIANE : Portfolio / Ateliers professionnels / 2ème année
+
+NAVBAR : même que ap1.html
+  - Logo "JK" → lien vers index.html
+  - "← Retour au portfolio" → lien vers index.html
+
+FOOTER : même que ap1.html
+  "Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon"
+
+
+=============================================================
+  ORDRE D'AFFICHAGE DES ATELIERS
+=============================================================
+
+1. Cluster Proxmox (en premier — projet le plus complet)
+2. pfSense & VPN OpenVPN (en second)
+
+
+=============================================================
+  NOTES TECHNIQUES POUR CLAUDE CODE
+=============================================================
+
+- Le fichier s'appelle ap2.html et doit être placé dans le même
+  dossier que ap1.html (racine du portfolio ou dossier "portfolio/").
+- Reprendre EXACTEMENT le même CSS que ap1.html (couleurs, fonts,
+  variables CSS, animations, responsive). Si le CSS est dans un
+  fichier séparé (style.css), l'importer de la même façon.
+- Si le CSS est inline dans ap1.html, le copier tel quel dans ap2.html
+  et adapter uniquement le contenu.
+- Le design doit être identique visuellement : même fond, même navbar,
+  mêmes cards d'ateliers avec leur structure contexte/objectifs/
+  environnement/réalisation/compétences/tags.
+- NE PAS inventer de liens PDF ou de captures d'écran — il n'y en a pas.
+- Pour l'environnement technologique, utiliser des badges/pills
+  exactement comme sur ap1.html.
+- Les compétences mobilisées doivent être en gras pour le nom de la
+  compétence, suivi du détail en texte normal, comme sur ap1.html.
+=============================================================

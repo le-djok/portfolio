@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP 2ème Année | Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <a class="nav-back" href="index.html">← Retour au portfolio</a>
+</nav>
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / Ateliers professionnels / 2ème année</div>
+  <span class="page-tag">2ème année · Ateliers</span>
+  <h1>AP <span class="accent">2ème Année</span></h1>
+  <p class="page-intro">Situations professionnelles réalisées en deuxième année de BTS SIO SISR : mise en place d'un cluster Proxmox haute disponibilité et configuration d'un pare-feu pfSense avec VPN OpenVPN.</p>
+</div>
+<div class="content">
+
+  <!-- CLUSTER PROXMOX -->
+  <div class="block">
+    <div class="block-title">Cluster Proxmox – Haute Disponibilité</div>
+
+    <div class="sub-title">Contexte</div>
+    <p>Projet réalisé en trinôme (Joseph Kittaneh, Samuel Timothée, Mehdi Benabdallah) : déploiement d'une infrastructure de virtualisation haute disponibilité avec Proxmox VE sur trois serveurs physiques constituant les nœuds d'un cluster.</p>
+
+    <div class="sub-title">Objectifs</div>
+    <p>Installer et configurer Proxmox VE, créer et cloner des machines virtuelles, regrouper les serveurs en cluster, intégrer un stockage NFS partagé via TrueNAS et démontrer la haute disponibilité avec migration automatique en cas de panne.</p>
+
+    <div class="sub-title">Environnement technologique</div>
+    <div class="env-grid">
+      <div class="env-tag"><div class="env-dot"></div>Proxmox VE</div>
+      <div class="env-tag"><div class="env-dot"></div>Debian 13</div>
+      <div class="env-tag"><div class="env-dot"></div>TrueNAS (NFS)</div>
+      <div class="env-tag"><div class="env-dot"></div>Cluster 3 nœuds</div>
+      <div class="env-tag"><div class="env-dot"></div>Haute Disponibilité</div>
+      <div class="env-tag"><div class="env-dot"></div>SSH / FTP</div>
+    </div>
+
+    <div class="sub-title">Réalisation</div>
+    <ul>
+      <li>Installation de Proxmox VE sur serveur physique, configuration IP statique et hostname</li>
+      <li>Création d'une VM Debian 13, activation SSH et transfert FTP (vsftpd + WinSCP)</li>
+      <li>Conversion en template et clonage (clone lié et clone complet)</li>
+      <li>Constitution du cluster « cluster-skjb » depuis trois nœuds interconnectés</li>
+      <li>Ajout du stockage NFS TrueNAS partagé entre les trois nœuds</li>
+      <li>Configuration HA avec priorités de nœuds et tests de bascule automatique</li>
+      <li>Gestion des utilisateurs, pools de ressources et rôles personnalisés (VM.Allocate, VM.Clone…)</li>
+    </ul>
+
+    <div class="sub-title">Compétences mobilisées</div>
+    <ul>
+      <li><strong>Gérer le patrimoine informatique</strong> : recenser les ressources numériques, assurer la disponibilité d'une infrastructure de virtualisation</li>
+      <li><strong>Mettre à disposition des utilisateurs un service informatique</strong> : déployer Proxmox VE, mettre en œuvre la haute disponibilité, tester l'intégration</li>
+      <li><strong>Travailler en mode projet</strong> : coordonner les actions au sein d'un trinôme, respecter les étapes et livrables</li>
+      <li><strong>Gérer les droits et habilitations</strong> : créer des rôles personnalisés et configurer les permissions par pool de ressources</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">Proxmox VE</span>
+      <span class="tag">Debian 13</span>
+      <span class="tag">TrueNAS</span>
+      <span class="tag">NFS</span>
+      <span class="tag">SSH</span>
+      <span class="tag">Cluster</span>
+      <span class="tag">Haute Disponibilité</span>
+      <span class="tag">Virtualisation</span>
+    </div>
+  </div>
+
+  <!-- PFSENSE + VPN -->
+  <div class="block">
+    <div class="block-title">pfSense &amp; VPN OpenVPN</div>
+
+    <div class="sub-title">Contexte</div>
+    <p>Mise en place d'une infrastructure réseau sécurisée avec un pare-feu pfSense et un tunnel VPN OpenVPN. L'architecture s'appuie sur des VMs déployées dans le réseau du lycée : interface WAN sur le VLAN 992 et LAN sur le VLAN 213, avec un serveur Apache Debian en zone interne.</p>
+
+    <div class="sub-title">Objectifs</div>
+    <p>Configurer pfSense comme pare-feu/routeur, mettre en place une PKI complète, déployer un serveur OpenVPN, définir les règles de filtrage et valider la connectivité VPN depuis l'extérieur.</p>
+
+    <div class="sub-title">Environnement technologique</div>
+    <div class="env-grid">
+      <div class="env-tag"><div class="env-dot"></div>pfSense</div>
+      <div class="env-tag"><div class="env-dot"></div>OpenVPN</div>
+      <div class="env-tag"><div class="env-dot"></div>PKI / SSL-TLS</div>
+      <div class="env-tag"><div class="env-dot"></div>Apache (Debian)</div>
+      <div class="env-tag"><div class="env-dot"></div>Wireshark</div>
+      <div class="env-tag"><div class="env-dot"></div>NAT / Port Forward</div>
+      <div class="env-tag"><div class="env-dot"></div>VLAN</div>
+    </div>
+
+    <div class="sub-title">Réalisation</div>
+    <ul>
+      <li>Configuration des interfaces WAN (DHCP, VLAN 992) et LAN (IP fixe, VLAN 213)</li>
+      <li>Règles de pare-feu : politique deny-all + autorisations explicites</li>
+      <li>NAT Port Forward : port 26213 (WAN) → port 80 Apache interne</li>
+      <li>Création de la PKI : autorité CA, certificat serveur et certificat client</li>
+      <li>Serveur OpenVPN : UDP, port 21394, tunnel 10.10.213.0/24</li>
+      <li>Export de la configuration client (.ovpn) via openvpn-client-export</li>
+      <li>Tests VPN : ping, SSH via tunnel, analyse Wireshark du trafic chiffré</li>
+    </ul>
+
+    <div class="sub-title">Compétences mobilisées</div>
+    <ul>
+      <li><strong>Gérer le patrimoine informatique</strong> : identifier et sécuriser les accès réseau par une architecture pare-feu/VPN</li>
+      <li><strong>Mettre à disposition des utilisateurs un service informatique</strong> : déployer un accès VPN sécurisé, tester et valider la connectivité</li>
+      <li><strong>Répondre aux incidents et demandes d'évolution</strong> : configurer les règles de filtrage, diagnostiquer les problèmes de connectivité</li>
+      <li><strong>Cybersécurité</strong> : mettre en œuvre une PKI, chiffrement TLS, analyse du trafic réseau avec Wireshark</li>
+    </ul>
+
+    <div class="tags-row">
+      <span class="tag">pfSense</span>
+      <span class="tag">OpenVPN</span>
+      <span class="tag">VPN</span>
+      <span class="tag">PKI</span>
+      <span class="tag">SSL/TLS</span>
+      <span class="tag">Pare-feu</span>
+      <span class="tag">NAT</span>
+      <span class="tag">Apache</span>
+      <span class="tag">Wireshark</span>
+      <span class="tag">Sécurité réseau</span>
+    </div>
+  </div>
+
+</div>
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>
