@@ -39,7 +39,10 @@
   <div class="block">
     <div class="block-title">La baie informatique</div>
     <p>La baie informatique présentée ci-dessous regroupe les équipements réseau nécessaires au bon fonctionnement du système d'information de l'entreprise. Elle assure la connectivité interne, l'accès à Internet, la téléphonie ainsi que la continuité de service en cas de panne :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Photo : vue globale de la baie informatique du client</div>
+    <div class="photo-real">
+      <img src="Images/baie-situation2.png" alt="Vue globale de la baie informatique du client" loading="lazy">
+      <div class="photo-caption">Vue globale de la baie informatique du client</div>
+    </div>
   </div>
 
   <!-- ROUTEUR UBIQUITI -->
@@ -48,7 +51,10 @@
     <p>Le routeur Ubiquiti constitue l'élément central du réseau. Il est configuré pour gérer à la fois le réseau local (LAN) et l'accès Internet (WAN).</p>
     <p>Deux ports sont utilisés pour la connexion WAN, incluant un lien principal et un lien de secours via la 4G. L'un des autres ports du routeur est relié au switch afin de distribuer la connectivité au réseau local de l'entreprise.</p>
     <p>Une règle de supervision a également été mise en place afin de surveiller l'état du routeur. Cette supervision repose sur une sonde de type ping, permettant de détecter rapidement une indisponibilité du routeur (routeur « down ») et d'agir en conséquence.</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Capture : interface de supervision du routeur Ubiquiti (sonde ping)</div>
+    <div class="photo-real">
+      <img src="Images/rtubiquiti.png" alt="Interface de supervision du routeur Ubiquiti – sonde ping" loading="lazy">
+      <div class="photo-caption">Interface de supervision du routeur Ubiquiti – sonde ping</div>
+    </div>
   </div>
 
   <!-- ROUTEUR 4G -->
@@ -68,7 +74,10 @@
       Tout trafic arrivant sur <strong>185.52.45.23:8888</strong> est redirigé vers<br>
       👉 <strong>192.168.27.21:443</strong>, depuis n'importe quelle IP, via WAN1.
     </div>
-    <div class="photo-placeholder" style="margin-top:1rem;"><span class="icon">🖼</span>Capture : règle NAT dans l'interface Ubiquiti</div>
+    <div class="photo-real" style="margin-top:1rem;">
+      <img src="Images/DECT.png" alt="Borne DECT et règle NAT dans l'interface Ubiquiti" loading="lazy">
+      <div class="photo-caption">Borne DECT – règle NAT dans l'interface Ubiquiti</div>
+    </div>
   </div>
 
   <!-- SWITCH -->

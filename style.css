@@ -46,6 +46,32 @@ strong { color: var(--text); font-weight: 500; }
   line-height: 1.5;
 }
 .photo-placeholder .icon { display: block; font-size: 1.4rem; margin-bottom: 0.4rem; opacity: 0.35; }
+.photo-real {
+  border: 1px solid rgba(0,229,255,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.25);
+  margin: 0.75rem 0;
+}
+.photo-real img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  max-height: 520px;
+}
+.photo-caption {
+  font-size: 0.74rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.4;
+}
+.photo-grid-2 .photo-real,
+.photo-grid-3 .photo-real,
+.photo-grid-4 .photo-real { margin: 0; }
 .photo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0.75rem 0; }
 .photo-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin: 0.75rem 0; }
 .photo-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0.75rem; margin: 0.75rem 0; }

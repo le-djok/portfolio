@@ -38,7 +38,10 @@
   <div class="block">
     <div class="block-title">Serveur physique</div>
     <p>Le serveur physique sur lequel l'infrastructure virtuelle sera présente :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Photo : le serveur physique Dell</div>
+    <div class="photo-real">
+      <img src="Images/serveur%20physique.HEIC" alt="Serveur physique Dell" loading="lazy">
+      <div class="photo-caption">Serveur physique Dell</div>
+    </div>
   </div>
 
   <!-- INSTALLATION OS + HYPER-V -->
@@ -46,8 +49,14 @@
     <div class="block-title">Installation de Windows Server 2025 et Hyper-V</div>
     <p>Vidage des disques et choix de l'OS Windows Server 2025, puis installation du service Hyper-V :</p>
     <div class="photo-grid-2">
-      <div class="photo-placeholder"><span class="icon">🖼</span>Vidage des disques et choix de l'OS Windows Server 2025</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Installation du service Hyper-V</div>
+      <div class="photo-real">
+        <img src="Images/windowsserver.HEIC" alt="Installation Windows Server 2025" loading="lazy">
+        <div class="photo-caption">Vidage des disques et choix de l'OS Windows Server 2025</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/servicehyperv.HEIC" alt="Installation du service Hyper-V" loading="lazy">
+        <div class="photo-caption">Installation du service Hyper-V</div>
+      </div>
     </div>
   </div>
 
@@ -55,16 +64,25 @@
   <div class="block">
     <div class="block-title">Switch virtuel et machines virtuelles</div>
     <p>Création d'un switch virtuel de type "Externe" afin que toutes les machines virtuelles ainsi que le serveur hôte communiquent entre eux :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Création du switch virtuel de type "Externe"</div>
+    <div class="photo-real">
+      <img src="Images/switch-virtuel.HEIC" alt="Switch virtuel de type Externe" loading="lazy">
+      <div class="photo-caption">Création du switch virtuel de type "Externe"</div>
+    </div>
     <p style="margin-top:1rem;">Création des 4 machines virtuelles Windows Server 2025 ainsi que deux machines Windows 11 client :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Liste des 4 VMs Windows Server 2025 + 2 clients Windows 11</div>
+    <div class="photo-real">
+      <img src="Images/machines.jpeg" alt="Liste des machines virtuelles Hyper-V" loading="lazy">
+      <div class="photo-caption">Liste des 4 VMs Windows Server 2025 + 2 clients Windows 11</div>
+    </div>
   </div>
 
   <!-- ACTIVE DIRECTORY / DHCP / DNS -->
   <div class="block">
     <div class="block-title">Active Directory, DHCP et DNS (DCCLIENT25)</div>
     <p>Sur DCCLIENT25, on installe le service Active Directory et crée notre domaine. On installe aussi DHCP et on crée une étendue qui attribuera une adresse dynamique à tous les postes de notre mini réseau. On installe aussi DNS afin que tous les postes du réseau puissent résoudre leurs noms de machines entre eux.</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Configuration Active Directory, DHCP et DNS sur DCCLIENT25</div>
+    <div class="photo-real">
+      <img src="Images/dhcp.HEIC" alt="Configuration Active Directory, DHCP et DNS sur DCCLIENT25" loading="lazy">
+      <div class="photo-caption">Configuration Active Directory, DHCP et DNS sur DCCLIENT25</div>
+    </div>
   </div>
 
   <!-- UO + GROUPES -->
@@ -72,36 +90,72 @@
     <div class="block-title">Unités d'organisation et groupes utilisateurs</div>
     <p>Création d'une OU "Services" contenant 4 groupes représentant les différents services d'une entreprise. Chaque groupe contenant les utilisateurs de ce service :</p>
     <div class="photo-grid-2">
-      <div class="photo-placeholder"><span class="icon">🖼</span>OU "Services" avec les 4 groupes</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Détail des groupes et utilisateurs</div>
+      <div class="photo-real">
+        <img src="Images/services.HEIC" alt="OU Services avec les 4 groupes" loading="lazy">
+        <div class="photo-caption">OU "Services" avec les 4 groupes</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/grpUtilisa.HEIC" alt="Détail des groupes et utilisateurs" loading="lazy">
+        <div class="photo-caption">Détail des groupes et utilisateurs</div>
+      </div>
     </div>
     <p style="margin-top:1rem;">Tous ces utilisateurs sont aussi stockés dans une OU nommée "Utilisateurs" et c'est à celle-ci qu'on liera nos GPO :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>OU "Utilisateurs" liée aux GPO</div>
+    <div class="photo-real">
+      <img src="Images/utilisateurs.HEIC" alt="OU Utilisateurs liée aux GPO" loading="lazy">
+      <div class="photo-caption">OU "Utilisateurs" liée aux GPO</div>
+    </div>
   </div>
 
   <!-- PARTAGES + GPO -->
   <div class="block">
     <div class="block-title">Partages réseau et GPO (SRVAPPLI25)</div>
     <p>Sur SRVAPPLI25, on formate un disque "D:" dans lequel seront présents les partages de dossiers :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Formatage du disque D: sur SRVAPPLI25</div>
+    <div class="photo-real">
+      <img src="Images/D.jpeg" alt="Formatage du disque D: sur SRVAPPLI25" loading="lazy">
+      <div class="photo-caption">Formatage du disque D: sur SRVAPPLI25</div>
+    </div>
     <p style="margin-top:1rem;">On partage chaque dossier et on autorise la modification aux bons groupes :</p>
     <div class="photo-grid-2">
-      <div class="photo-placeholder"><span class="icon">🖼</span>Partage des dossiers avec droits par groupe (1)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Partage des dossiers avec droits par groupe (2)</div>
+      <div class="photo-real">
+        <img src="Images/droitDossier.HEIC" alt="Partage des dossiers avec droits par groupe 1" loading="lazy">
+        <div class="photo-caption">Partage des dossiers avec droits par groupe (1)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/droitsPerso.HEIC" alt="Partage des dossiers avec droits par groupe 2" loading="lazy">
+        <div class="photo-caption">Partage des dossiers avec droits par groupe (2)</div>
+      </div>
     </div>
     <p style="margin-top:1rem;">On crée donc 4 GPO qui vont remonter automatiquement les dossiers pour chaque utilisateur du bon groupe en mappant un lecteur :</p>
     <div class="photo-grid-2">
-      <div class="photo-placeholder"><span class="icon">🖼</span>GPO mappage lecteur réseau (1)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>GPO mappage lecteur réseau (2)</div>
+      <div class="photo-real">
+        <img src="Images/mappage.HEIC" alt="GPO mappage lecteur réseau 1" loading="lazy">
+        <div class="photo-caption">GPO mappage lecteur réseau (1)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/gpo.HEIC" alt="GPO mappage lecteur réseau 2" loading="lazy">
+        <div class="photo-caption">GPO mappage lecteur réseau (2)</div>
+      </div>
     </div>
     <p style="margin-top:1rem;">On crée aussi une GPO qui remontera un dossier perso pour tout utilisateur du domaine qui s'identifie :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>GPO dossier personnel utilisateur</div>
+    <div class="photo-real">
+      <img src="Images/mappagePerso.HEIC" alt="GPO dossier personnel utilisateur" loading="lazy">
+      <div class="photo-caption">GPO dossier personnel utilisateur</div>
+    </div>
     <p style="margin-top:1rem;">On partage le dossier et on y donne les bons droits :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Partage dossier perso avec droits</div>
+    <div class="photo-real">
+      <img src="Images/dossPerso.HEIC" alt="Partage dossier perso avec droits" loading="lazy">
+      <div class="photo-caption">Partage dossier perso avec droits</div>
+    </div>
     <p style="margin-top:1rem;">Dans la même GPO, on redirige aussi le dossier Documents vers le partage perso :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Redirection dossier Documents vers le partage perso</div>
+    <div class="photo-real">
+      <img src="Images/redirection.HEIC" alt="Redirection dossier Documents vers le partage perso" loading="lazy">
+      <div class="photo-caption">Redirection dossier Documents vers le partage perso</div>
+    </div>
     <p style="margin-top:1rem;">À la connexion d'un utilisateur, on voit bien que le dossier de son service remonte ainsi qu'un dossier perso à son nom :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Résultat à la connexion : lecteur service + dossier perso</div>
+    <div class="photo-real">
+      <img src="Images/connexion.HEIC" alt="Résultat à la connexion : lecteur service + dossier perso" loading="lazy">
+      <div class="photo-caption">Résultat à la connexion : lecteur service + dossier perso</div>
+    </div>
   </div>
 
   <!-- RDS -->
@@ -109,21 +163,45 @@
     <div class="block-title">Serveur Bureau à distance – RDS25</div>
     <p>Sur RDS25, une fois que le service de Bureau à Distance est installé, on modifie les propriétés de déploiement en indiquant le mode de déploiement par utilisateur et en déclarant notre serveur comme serveur de licence :</p>
     <div class="photo-grid-2">
-      <div class="photo-placeholder"><span class="icon">🖼</span>Propriétés déploiement RDS – mode par utilisateur</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Déclaration du serveur de licence</div>
+      <div class="photo-real">
+        <img src="Images/bureauPerso.HEIC" alt="Propriétés déploiement RDS mode par utilisateur" loading="lazy">
+        <div class="photo-caption">Propriétés déploiement RDS – mode par utilisateur</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/declare.HEIC" alt="Déclaration du serveur de licence" loading="lazy">
+        <div class="photo-caption">Déclaration du serveur de licence</div>
+      </div>
     </div>
     <p style="margin-top:1rem;">Création de la Collection, en indiquant le serveur hôte de session et les utilisateurs associés à cette collection :</p>
     <div class="photo-grid-2">
-      <div class="photo-placeholder"><span class="icon">🖼</span>Création de la Collection RDS (1)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Création de la Collection RDS (2)</div>
+      <div class="photo-real">
+        <img src="Images/collection.HEIC" alt="Création de la Collection RDS 1" loading="lazy">
+        <div class="photo-caption">Création de la Collection RDS (1)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/testRdsTech.HEIC" alt="Création de la Collection RDS 2" loading="lazy">
+        <div class="photo-caption">Création de la Collection RDS (2)</div>
+      </div>
     </div>
     <p style="margin-top:1rem;">Les utilisateurs peuvent maintenant se connecter au Serveur RDS et accéder à leur session perso. On voit que les bureaux ne se mélangent pas – un utilisateur voit son propre bureau et un autre le sien :</p>
-    <div class="photo-placeholder"><span class="icon">🖼</span>Connexion utilisateur RDS – bureau personnalisé</div>
+    <div class="photo-real">
+      <img src="Images/bureau-a-distance.HEIC" alt="Connexion utilisateur RDS bureau personnalisé" loading="lazy">
+      <div class="photo-caption">Connexion utilisateur RDS – bureau personnalisé</div>
+    </div>
     <p style="margin-top:1rem;">Depuis le serveur RDS, on peut accéder aux connexions et voir les utilisateurs en cours de connexion et qui étaient connectés :</p>
     <div class="photo-grid-3">
-      <div class="photo-placeholder"><span class="icon">🖼</span>Vue des sessions actives sur le serveur RDS (1)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Vue des sessions actives (2)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Vue des sessions actives (3)</div>
+      <div class="photo-real">
+        <img src="Images/remoteApp1.jpg" alt="Vue des sessions actives sur le serveur RDS 1" loading="lazy">
+        <div class="photo-caption">Vue des sessions actives (1)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/remoteApp2.jpg" alt="Vue des sessions actives 2" loading="lazy">
+        <div class="photo-caption">Vue des sessions actives (2)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/AppliMetier.HEIC" alt="Application métier publiée via RemoteApp" loading="lazy">
+        <div class="photo-caption">Application métier via RemoteApp (3)</div>
+      </div>
     </div>
     <p style="margin-top:1rem;">On peut donc mettre à disposition des dossiers ou des applications métiers de plusieurs manières : en mettant à disposition dans le dossier "Public" ou bien en publiant une RemoteApp depuis la collection sur le Serveur RDS.</p>
   </div>
@@ -133,10 +211,22 @@
     <div class="block-title">Script de simulation déploiement poste client</div>
     <p>Création d'un script stocké sur le serveur de fichiers dans le but d'une simulation de déploiement de poste pour client. Un script qui renomme le PC, supprime des apps inutiles comme Xbox app, et marque le PC comme "déployé" dans l'éditeur de registre.</p>
     <div class="photo-grid-4">
-      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 1)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 2)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 3)</div>
-      <div class="photo-placeholder"><span class="icon">🖼</span>Script déploiement (capture 4)</div>
+      <div class="photo-real">
+        <img src="Images/script.jpg" alt="Script de déploiement capture 1" loading="lazy">
+        <div class="photo-caption">Script (1)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/lancement.jpg" alt="Lancement du script" loading="lazy">
+        <div class="photo-caption">Lancement du script (2)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/preuve-nom-script.jpg" alt="Preuve du nom du script" loading="lazy">
+        <div class="photo-caption">Preuve nom du script (3)</div>
+      </div>
+      <div class="photo-real">
+        <img src="Images/registre.jpg" alt="Registre Windows marquage déployé" loading="lazy">
+        <div class="photo-caption">Registre – marquage « déployé » (4)</div>
+      </div>
     </div>
   </div>
 
