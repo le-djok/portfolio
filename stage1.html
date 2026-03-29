@@ -10,8 +10,58 @@
 <body>
 <nav>
   <a class="nav-logo" href="index.html">JK</a>
-  <a class="nav-back" href="index.html">← Retour au portfolio</a>
+
+  <!-- Desktop -->
+  <ul class="nav-links">
+    <li class="dropdown">
+      <a href="#">Stages ▾</a>
+      <div class="dropdown-menu">
+        <a href="stage1.html">Stage 1 – Repit Ainay</a>
+        <div class="has-submenu">
+          <a href="stage2.html">Stage 2 – APE Conseil</a>
+          <div class="submenu">
+            <a href="situation1.html">Situation 1 – Infra Windows Server</a>
+            <a href="situation2.html">Situation 2 – Baie réseau</a>
+            <a href="situation3.html">Situation 3 – Déploiement postes</a>
+            <div class="submenu-divider"></div>
+            <a href="journal.html">Journal de stage</a>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">Ateliers ▾</a>
+      <div class="dropdown-menu">
+        <a href="ap1.html">1ère année</a>
+        <a href="ap2.html">2ème année</a>
+      </div>
+    </li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="tableau_e5.html">Tableau E5</a></li>
+    <li><a href="moi.html">Moi</a></li>
+  </ul>
+
+  <!-- Hamburger mobile -->
+  <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Menu mobile -->
+<div class="nav-mobile">
+  <a href="index.html">🏠 Accueil</a>
+  <a href="stage1.html">Stage 1 – Repit Ainay</a>
+  <a href="stage2.html">Stage 2 – APE Conseil</a>
+  <a href="situation1.html" class="indent">↳ Situation 1</a>
+  <a href="situation2.html" class="indent">↳ Situation 2</a>
+  <a href="situation3.html" class="indent">↳ Situation 3</a>
+  <a href="journal.html" class="indent">↳ Journal de stage</a>
+  <a href="ap1.html">Ateliers 1ère année</a>
+  <a href="ap2.html">Ateliers 2ème année</a>
+  <a href="veille.html">Veille</a>
+  <a href="tableau_e5.html">Tableau E5</a>
+  <a href="moi.html">Moi</a>
+</div>
 <div class="page-header">
   <div class="breadcrumb"><a href="index.html">Portfolio</a> / Stages / Stage 1ère année</div>
   <span class="page-tag">1ère année · Stage</span>
