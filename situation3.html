@@ -136,10 +136,71 @@
           <li>Création d'un compte utilisateur local administrateur</li>
           <li>Installation des outils constructeurs selon le fabricant (Dell Command Update, HP Image Assistant ou Lenovo System Update)</li>
         </ul>
-        <div class="photo-real" style="margin-top:0.75rem;">
-          <img src="Images/preuve.jpg" alt="Preuve d'exécution du script PowerShell" loading="lazy">
-          <div class="photo-caption">Preuve d'exécution du script PowerShell</div>
+        <!-- Extraits du script PowerShell -->
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:1rem;">
+
+          <!-- Extrait 1 : Debloat -->
+          <div style="background:#0d1117;border:1px solid rgba(0,229,255,0.15);border-radius:10px;overflow:hidden;">
+            <div style="background:rgba(0,229,255,0.06);padding:6px 14px;font-size:0.72rem;color:var(--accent);font-weight:600;letter-spacing:1px;border-bottom:1px solid rgba(0,229,255,0.1);">📄 setup_postes.ps1 — Suppression des bloatwares</div>
+            <pre style="margin:0;padding:1rem;font-size:0.78rem;line-height:1.7;overflow-x:auto;font-family:'Courier New',monospace;color:#e6edf3;"><span style="color:#ff7b72;">$bloatwareApps</span> <span style="color:#e6edf3;">=</span> <span style="color:#79c0ff;">@(</span>
+    <span style="color:#a5d6ff;">"Microsoft.549981C3F5F10"</span>   <span style="color:#8b949e;"># Cortana</span>
+    <span style="color:#a5d6ff;">"Microsoft.XboxApp"</span>
+    <span style="color:#a5d6ff;">"Microsoft.XboxGamingOverlay"</span>
+    <span style="color:#a5d6ff;">"MicrosoftTeams"</span>           <span style="color:#8b949e;"># Teams legacy</span>
+    <span style="color:#a5d6ff;">"SpotifyAB.SpotifyMusic"</span>
+    <span style="color:#a5d6ff;">"*McAfee*"</span>                 <span style="color:#8b949e;"># Tous les McAfee</span>
+    <span style="color:#a5d6ff;">"*Dell*"</span><span style="color:#e6edf3;">, </span><span style="color:#a5d6ff;">"*HP*"</span><span style="color:#e6edf3;">, </span><span style="color:#a5d6ff;">"*Lenovo*"</span>  <span style="color:#8b949e;"># Bloatware OEM</span>
+<span style="color:#79c0ff;">)</span>
+<span style="color:#ff7b72;">foreach</span> <span style="color:#e6edf3;">(</span><span style="color:#ff7b72;">$app</span> <span style="color:#ff7b72;">in</span> <span style="color:#ff7b72;">$bloatwareApps</span><span style="color:#e6edf3;">) {</span>
+    Get-AppxPackage <span style="color:#ff7b72;">-Name</span> <span style="color:#ff7b72;">$app</span> <span style="color:#ff7b72;">-AllUsers</span> <span style="color:#e6edf3;">|</span> Remove-AppxPackage <span style="color:#ff7b72;">-AllUsers</span>
+    Get-AppxProvisionedPackage <span style="color:#ff7b72;">-Online</span> <span style="color:#e6edf3;">|</span>
+        <span style="color:#ff7b72;">Where-Object</span> DisplayName <span style="color:#ff7b72;">-like</span> <span style="color:#ff7b72;">$app</span> <span style="color:#e6edf3;">|</span>
+        Remove-AppxProvisionedPackage <span style="color:#ff7b72;">-Online</span>
+<span style="color:#e6edf3;">}</span>
+Write-Host <span style="color:#a5d6ff;">"Removed $removedCount bloatware packages"</span> <span style="color:#ff7b72;">-ForegroundColor</span> Green</pre>
+          </div>
+
+          <!-- Extrait 2 : Renommage + activation -->
+          <div style="background:#0d1117;border:1px solid rgba(0,229,255,0.15);border-radius:10px;overflow:hidden;">
+            <div style="background:rgba(0,229,255,0.06);padding:6px 14px;font-size:0.72rem;color:var(--accent);font-weight:600;letter-spacing:1px;border-bottom:1px solid rgba(0,229,255,0.1);">📄 setup_postes.ps1 — Renommage par numéro de série + Activation Windows</div>
+            <pre style="margin:0;padding:1rem;font-size:0.78rem;line-height:1.7;overflow-x:auto;font-family:'Courier New',monospace;color:#e6edf3;"><span style="color:#8b949e;"># Renommage automatique par numéro de série BIOS</span>
+<span style="color:#ff7b72;">$serial</span> <span style="color:#e6edf3;">=</span> <span style="color:#e6edf3;">(</span>Get-CimInstance <span style="color:#ff7b72;">-ClassName</span> Win32_BIOS<span style="color:#e6edf3;">)</span>.SerialNumber
+Rename-Computer <span style="color:#ff7b72;">-NewName</span> <span style="color:#ff7b72;">$serial</span> <span style="color:#ff7b72;">-Force</span>
+Write-Host <span style="color:#a5d6ff;">"Computer renamed to: $serial"</span>
+
+<span style="color:#8b949e;"># Activation via clé OEM intégrée dans le BIOS</span>
+<span style="color:#ff7b72;">$productKey</span> <span style="color:#e6edf3;">=</span> <span style="color:#e6edf3;">(</span>Get-CimInstance <span style="color:#ff7b72;">-ClassName</span> SoftwareLicensingService<span style="color:#e6edf3;">)</span>.OA3xOriginalProductKey
+<span style="color:#ff7b72;">if</span> <span style="color:#e6edf3;">(</span><span style="color:#ff7b72;">$productKey</span><span style="color:#e6edf3;">) {</span>
+    Start-Process <span style="color:#a5d6ff;">"cscript.exe"</span> <span style="color:#ff7b72;">-ArgumentList</span> <span style="color:#a5d6ff;">"slmgr.vbs /ipk $productKey"</span> <span style="color:#ff7b72;">-Wait</span>
+    Start-Process <span style="color:#a5d6ff;">"cscript.exe"</span> <span style="color:#ff7b72;">-ArgumentList</span> <span style="color:#a5d6ff;">"slmgr.vbs /ato"</span> <span style="color:#ff7b72;">-Wait</span>
+    Write-Host <span style="color:#a5d6ff;">"Windows activated successfully"</span> <span style="color:#ff7b72;">-ForegroundColor</span> Green
+<span style="color:#e6edf3;">}</span></pre>
+          </div>
+
+          <!-- Extrait 3 : Outil constructeur -->
+          <div style="background:#0d1117;border:1px solid rgba(0,229,255,0.15);border-radius:10px;overflow:hidden;">
+            <div style="background:rgba(0,229,255,0.06);padding:6px 14px;font-size:0.72rem;color:var(--accent);font-weight:600;letter-spacing:1px;border-bottom:1px solid rgba(0,229,255,0.1);">📄 setup_postes.ps1 — Installation de l'outil constructeur selon le fabricant</div>
+            <pre style="margin:0;padding:1rem;font-size:0.78rem;line-height:1.7;overflow-x:auto;font-family:'Courier New',monospace;color:#e6edf3;">Write-Host <span style="color:#a5d6ff;">"1. Dell  2. HP  3. Lenovo  4. None"</span>
+<span style="color:#ff7b72;">$manufacturerNumber</span> <span style="color:#e6edf3;">=</span> Read-Host <span style="color:#a5d6ff;">"Enter a number (1-4)"</span>
+
+<span style="color:#ff7b72;">switch</span> <span style="color:#e6edf3;">(</span><span style="color:#ff7b72;">$manufacturerNumber</span><span style="color:#e6edf3;">) {</span>
+    <span style="color:#79c0ff;">1</span> <span style="color:#e6edf3;">{</span> <span style="color:#8b949e;"># Dell → Dell Command Update</span>
+        Start-Process <span style="color:#ff7b72;">$dcuInstaller</span> <span style="color:#ff7b72;">-ArgumentList</span> <span style="color:#a5d6ff;">"/s"</span> <span style="color:#ff7b72;">-Wait</span>
+        Write-Host <span style="color:#a5d6ff;">"Dell Command Update installed"</span> <span style="color:#ff7b72;">-ForegroundColor</span> Green
+    <span style="color:#e6edf3;">}</span>
+    <span style="color:#79c0ff;">2</span> <span style="color:#e6edf3;">{</span> <span style="color:#8b949e;"># HP → HP Image Assistant</span>
+        Start-Process <span style="color:#ff7b72;">$hpiaInstaller</span> <span style="color:#ff7b72;">-ArgumentList</span> <span style="color:#a5d6ff;">"/s /e"</span> <span style="color:#ff7b72;">-Wait</span>
+        Write-Host <span style="color:#a5d6ff;">"HP Image Assistant installed"</span> <span style="color:#ff7b72;">-ForegroundColor</span> Green
+    <span style="color:#e6edf3;">}</span>
+    <span style="color:#79c0ff;">3</span> <span style="color:#e6edf3;">{</span> <span style="color:#8b949e;"># Lenovo → Lenovo System Update</span>
+        Start-Process <span style="color:#ff7b72;">$lenovoInstaller</span> <span style="color:#ff7b72;">-ArgumentList</span> <span style="color:#a5d6ff;">"/VERYSILENT /NORESTART"</span> <span style="color:#ff7b72;">-Wait</span>
+        Write-Host <span style="color:#a5d6ff;">"Lenovo System Update installed"</span> <span style="color:#ff7b72;">-ForegroundColor</span> Green
+    <span style="color:#e6edf3;">}</span>
+<span style="color:#e6edf3;">}</span></pre>
+          </div>
+
         </div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:0.6rem;font-style:italic;text-align:center;">Extraits commentés du script PowerShell de déploiement (setup_postes.ps1)</div>
       </div>
     </div>
   </div>
