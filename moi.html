@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos – Joseph Kittaneh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Layout ── */
+.page-header{padding:120px 2rem 3rem;max-width:1100px;margin:0 auto;}
+.breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+.breadcrumb a{color:var(--muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--accent);}
+.badge{display:inline-block;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--accent);font-size:0.75rem;font-weight:500;padding:3px 12px;border-radius:20px;letter-spacing:0.5px;margin-bottom:1rem;text-transform:uppercase;}
+.page-header h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;margin-bottom:0.5rem;}
+.page-header .sub{color:var(--muted);font-size:1rem;max-width:580px;line-height:1.7;}
+.section{padding:2.5rem 2rem;max-width:1100px;margin:0 auto;}
+.divider{border:none;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;}
+
+/* ── Profile card ── */
+.profile-grid{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start;}
+.profile-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;text-align:center;}
+.profile-avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,rgba(0,229,255,0.18),rgba(124,108,255,0.18));border:2px solid rgba(0,229,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);margin:0 auto 1.2rem;}
+.profile-card h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.25rem;}
+.profile-card .role{color:var(--accent);font-size:0.85rem;font-weight:500;margin-bottom:1.5rem;}
+.contact-list{list-style:none;padding:0;margin:0;text-align:left;}
+.contact-list li{display:flex;align-items:center;gap:10px;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;color:var(--muted);}
+.contact-list li:last-child{border-bottom:none;}
+.contact-list a{color:var(--text);text-decoration:none;transition:color 0.2s;}
+.contact-list a:hover{color:var(--accent);}
+.contact-icon{font-size:1rem;flex-shrink:0;}
+
+/* ── Info sections ── */
+.info-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.25rem;transition:border-color 0.3s;}
+.info-block:hover{border-color:rgba(0,229,255,0.2);}
+.info-block h3{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--accent);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.5px;font-size:0.78rem;}
+.info-block p{color:var(--muted);font-size:0.92rem;line-height:1.7;}
+
+/* ── LinkedIn button ── */
+.btn-linkedin{display:inline-flex;align-items:center;gap:10px;background:#0A66C2;color:#fff;padding:11px 22px;border-radius:8px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.2s;margin-top:1.25rem;width:100%;justify-content:center;}
+.btn-linkedin:hover{background:#0857a8;transform:translateY(-2px);}
+.btn-linkedin svg{width:18px;height:18px;fill:#fff;flex-shrink:0;}
+
+/* ── CV section ── */
+.cv-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;}
+.cv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:gap;}
+.cv-header h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;}
+.btn-cv{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#000;padding:9px 20px;border-radius:8px;font-size:0.87rem;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-cv:hover{background:#33eaff;transform:translateY(-2px);}
+
+/* ── CV content ── */
+.cv-section{margin-bottom:1.75rem;}
+.cv-section:last-child{margin-bottom:0;}
+.cv-section-title{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:0.9rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.cv-item{margin-bottom:1.1rem;padding-left:0.75rem;border-left:2px solid rgba(0,229,255,0.25);}
+.cv-item:last-child{margin-bottom:0;}
+.cv-item-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.25rem;flex-wrap:wrap;}
+.cv-item-title{font-weight:600;font-size:0.92rem;}
+.cv-item-date{font-size:0.78rem;color:var(--accent);font-weight:500;white-space:nowrap;}
+.cv-item-org{font-size:0.83rem;color:var(--muted);margin-bottom:0.35rem;}
+.cv-item-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+.cv-item-desc ul{margin:0.3rem 0 0 1rem;padding:0;}
+.cv-item-desc li{margin-bottom:0.2rem;}
+
+/* ── Skills pills ── */
+.skills-wrap{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;}
+.skill-pill{background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.18);color:var(--muted);font-size:0.78rem;padding:3px 11px;border-radius:20px;}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .profile-grid{grid-template-columns:1fr;}
+  .cv-header{flex-direction:column;align-items:flex-start;gap:0.75rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">JK</a>
+  <ul class="nav-links">
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#competences">Compétences</a></li>
+    <li><a href="index.html#stages">Stages</a></li>
+    <li><a href="index.html#ateliers">Ateliers</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="tableau_e5.html">Tableau E5</a></li>
+    <li><a href="moi.html" style="color:var(--accent)">Moi</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Portfolio</a> / Moi</div>
+  <span class="badge">Profil · Contact</span>
+  <h1>Qui suis-je ?</h1>
+  <p class="sub">Étudiant en BTS SIO SISR, passionné par les réseaux et la cybersécurité, basé à Lyon.</p>
+</div>
+<hr class="divider">
+
+<div class="section">
+  <div class="profile-grid">
+
+    <!-- Colonne gauche : carte profil -->
+    <div>
+      <div class="profile-card">
+        <div class="profile-avatar">JK</div>
+        <h2>Joseph Kittaneh</h2>
+        <p class="role">BTS SIO SISR · 2ème année</p>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon">📍</span>
+            <span>Lyon 3, France</span>
+          </li>
+          <li>
+            <span class="contact-icon">🎂</span>
+            <span>21 ans</span>
+          </li>
+          <li>
+            <span class="contact-icon">✉️</span>
+            <a href="mailto:joseph.kittaneh@lmdsio.fr">joseph.kittaneh@lmdsio.fr</a>
+          </li>
+          <li>
+            <span class="contact-icon">📱</span>
+            <span>07 49 79 46 41</span>
+          </li>
+          <li>
+            <span class="contact-icon">🎓</span>
+            <span>Lycée La Martinière Duchère</span>
+          </li>
+        </ul>
+        <a class="btn-linkedin" href="https://www.linkedin.com/in/joseph-kittaneh-102b83271/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Voir mon LinkedIn
+        </a>
+      </div>
+
+      <div class="info-block" style="margin-top:1.25rem;">
+        <h3>🎯 Objectif</h3>
+        <p>Recherche d'une alternance pour intégrer la formation ingénieur <strong style="color:var(--text)">Systèmes Numériques Industriels – ECAM LaSalle</strong>. Intéressé par les domaines réseau, cybersécurité et systèmes embarqués.</p>
+      </div>
+
+      <div class="info-block">
+        <h3>🌍 Langues</h3>
+        <p>Français — langue maternelle<br>Anglais — opérationnel</p>
+      </div>
+
+      <div class="info-block">
+        <h3>🎮 Centres d'intérêt</h3>
+        <p>Sport · Lecture · Cinéma · Nature · Informatique</p>
+      </div>
+    </div>
+
+    <!-- Colonne droite : CV détaillé -->
+    <div>
+      <div class="cv-block">
+        <div class="cv-header">
+          <h3>Curriculum Vitae</h3>
+          <a class="btn-cv" href="Joseph_Kittaneh_CV_4_ECAM.pdf" target="_blank">
+            ⬇ Télécharger le CV (PDF)
+          </a>
+        </div>
+
+        <!-- Formation -->
+        <div class="cv-section">
+          <div class="cv-section-title">Formation</div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">BTS SIO – Option SISR</span>
+              <span class="cv-item-date">Sept. 2024 – Juin 2026</span>
+            </div>
+            <div class="cv-item-org">Lycée La Martinière Duchère · Lyon</div>
+            <div class="cv-item-desc">Solutions d'Infrastructure, Systèmes et Réseaux. Administration réseau, virtualisation, cybersécurité, déploiement de services.</div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Licence Maths-Info</span>
+              <span class="cv-item-date">Sept. 2023 – Juin 2024</span>
+            </div>
+            <div class="cv-item-org">Université Claude Bernard Lyon 1 · Lyon</div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Baccalauréat Général</span>
+              <span class="cv-item-date">2020 – 2023</span>
+            </div>
+            <div class="cv-item-org">Lycée Lacassagne · Lyon — Mention Assez Bien</div>
+            <div class="cv-item-desc">Spécialités : Mathématiques · Numérique &amp; Sciences Informatiques · Euro Anglais Physique</div>
+          </div>
+        </div>
+
+        <!-- Expériences -->
+        <div class="cv-section">
+          <div class="cv-section-title">Expériences professionnelles</div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Technicien Système &amp; Réseau — Stage</span>
+              <span class="cv-item-date">Jan. – Fév. 2026</span>
+            </div>
+            <div class="cv-item-org">APE Conseil · Rillieux-la-Pape (ESN, infogérance)</div>
+            <div class="cv-item-desc">
+              <ul>
+                <li>Déploiement de postes via PXE/WDS + scripts PowerShell (~30 postes)</li>
+                <li>Administration Windows Server 2025 : AD, DNS, DHCP, GPO, Hyper-V, RDS</li>
+                <li>Renouvellement baie réseau client (Ubiquiti, backup 4G, NAT)</li>
+                <li>Support informatique : prise d'appels, tickets, assistance utilisateurs</li>
+                <li>Téléphonie IP (3CX)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Stagiaire — Réparation électronique</span>
+              <span class="cv-item-date">Mai – Juin 2025</span>
+            </div>
+            <div class="cv-item-org">REPIT Ainay · Lyon</div>
+            <div class="cv-item-desc">Vente, réparation appareils électroniques (smartphones, Mac, tablettes), gestion des stocks.</div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Agent de Service Hospitalier</span>
+              <span class="cv-item-date">Juin 2024 – Juin 2025</span>
+            </div>
+            <div class="cv-item-org">Centre Hospitalier Le Vinatier · Bron</div>
+          </div>
+        </div>
+
+        <!-- Compétences techniques -->
+        <div class="cv-section">
+          <div class="cv-section-title">Compétences techniques</div>
+          <div class="skills-wrap">
+            <span class="skill-pill">Windows Server</span>
+            <span class="skill-pill">Active Directory / GPO</span>
+            <span class="skill-pill">Hyper-V</span>
+            <span class="skill-pill">Proxmox VE</span>
+            <span class="skill-pill">pfSense</span>
+            <span class="skill-pill">OpenVPN / PKI</span>
+            <span class="skill-pill">PowerShell</span>
+            <span class="skill-pill">Linux Debian/Ubuntu</span>
+            <span class="skill-pill">TCP/IP · IPv4/IPv6</span>
+            <span class="skill-pill">PXE / WDS</span>
+            <span class="skill-pill">GLPI / Ticketing</span>
+            <span class="skill-pill">Ubiquiti</span>
+            <span class="skill-pill">Wireshark</span>
+            <span class="skill-pill">DNS · DHCP</span>
+            <span class="skill-pill">Cybersécurité</span>
+            <span class="skill-pill">HTML / CSS</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
+</body>
+</html>
