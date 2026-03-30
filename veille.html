@@ -2,16 +2,75 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veille Technologique | Joseph Kittaneh</title>
+<title>Veille Technologique – Zero Trust | Joseph Kittaneh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+.veille-intro{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;border-left:3px solid var(--accent);}
+.veille-intro p{color:var(--muted);font-size:0.95rem;line-height:1.8;margin:0;}
+.veille-intro strong{color:var(--text);}
+
+/* Frise chronologique sources */
+.timeline{position:relative;padding-left:2rem;margin:2rem 0;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),rgba(0,229,255,0.1));}
+.tl-item{position:relative;margin-bottom:2rem;}
+.tl-dot{position:absolute;left:-2.35rem;top:0.3rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(0,229,255,0.4);}
+.tl-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color 0.3s;}
+.tl-card:hover{border-color:rgba(0,229,255,0.25);}
+.tl-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;flex-wrap:wrap;}
+.tl-date{font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.18);padding:2px 10px;border-radius:20px;}
+.tl-source{font-size:0.72rem;color:var(--muted);font-weight:500;}
+.tl-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--text);}
+.tl-card p{font-size:0.88rem;color:var(--muted);line-height:1.7;margin:0 0 0.75rem;}
+.tl-key{font-size:0.8rem;color:var(--accent);font-weight:500;}
+.tl-link{display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:3px 10px;border-radius:6px;margin-top:0.5rem;transition:all 0.2s;}
+.tl-link:hover{color:var(--accent);border-color:rgba(0,229,255,0.3);}
+
+/* Stats chiffres clés */
+.stats-veille{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.5rem 0;}
+.stat-v{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;}
+.stat-v .num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-v .desc{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;line-height:1.4;}
+
+/* Comparatif VPN vs ZTNA */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+.compare-col{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.compare-col.bad{border-top:3px solid #FF5252;}
+.compare-col.good{border-top:3px solid #4CAF50;}
+.compare-col h4{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:1rem;}
+.compare-col.bad h4{color:#FF5252;}
+.compare-col.good h4{color:#4CAF50;}
+.compare-list{list-style:none;padding:0;margin:0;}
+.compare-list li{font-size:0.83rem;color:var(--muted);padding:0.35rem 0;border-bottom:1px solid var(--border);display:flex;gap:8px;line-height:1.5;}
+.compare-list li:last-child{border-bottom:none;}
+.ico-bad{color:#FF5252;flex-shrink:0;}
+.ico-good{color:#4CAF50;flex-shrink:0;}
+
+/* Outils */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin:1rem 0;}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;transition:border-color 0.2s;}
+.tool-card:hover{border-color:rgba(0,229,255,0.25);}
+.tool-card h4{font-family:'Syne',sans-serif;font-size:0.88rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.tool-card p{font-size:0.78rem;color:var(--muted);margin:0;line-height:1.5;}
+.tool-badge{display:inline-block;font-size:0.68rem;padding:2px 7px;border-radius:10px;margin-bottom:0.4rem;font-weight:600;}
+.badge-enterprise{background:rgba(124,108,255,0.12);color:#7c6cff;border:1px solid rgba(124,108,255,0.2);}
+.badge-open{background:rgba(0,229,255,0.08);color:var(--accent);border:1px solid rgba(0,229,255,0.18);}
+
+/* Synthèse perso */
+.synthesis{background:linear-gradient(135deg,rgba(0,229,255,0.04),rgba(124,108,255,0.04));border:1px solid rgba(0,229,255,0.15);border-radius:14px;padding:1.75rem;}
+.synthesis h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:1rem;}
+.synthesis p{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;}
+.synthesis p:last-child{margin-bottom:0;}
+
+@media(max-width:600px){
+  .compare-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
 <nav>
   <a class="nav-logo" href="index.html">JK</a>
-
-  <!-- Desktop -->
   <ul class="nav-links">
     <li class="dropdown">
       <a href="#">Stages ▾</a>
@@ -36,18 +95,14 @@
         <a href="ap2.html">2ème année</a>
       </div>
     </li>
-    <li><a href="veille.html">Veille</a></li>
+    <li><a href="veille.html" style="color:var(--accent)">Veille</a></li>
     <li><a href="tableau_e5.html">Tableau E5</a></li>
     <li><a href="moi.html">Moi</a></li>
   </ul>
-
-  <!-- Hamburger mobile -->
   <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<!-- Menu mobile -->
 <div class="nav-mobile">
   <a href="index.html">🏠 Accueil</a>
   <a href="stage1.html">Stage 1 – Repit Ainay</a>
@@ -62,17 +117,192 @@
   <a href="tableau_e5.html">Tableau E5</a>
   <a href="moi.html">Moi</a>
 </div>
+
 <div class="page-header">
   <div class="breadcrumb"><a href="index.html">Portfolio</a> / Veille Technologique</div>
-  <span class="page-tag">Veille</span>
-  <h1>Veille <span class="accent">Technologique</span></h1>
-  <p class="page-intro">Suivi des évolutions du secteur informatique, en particulier dans les domaines de la cybersécurité et de l'administration réseau.</p>
+  <span class="page-tag">Veille · Cybersécurité réseau</span>
+  <h1>Du VPN classique au <span class="accent">Zero Trust</span></h1>
+  <p class="page-intro">Veille sur l'évolution des architectures d'accès distant sécurisé : pourquoi le VPN traditionnel est en train d'être remplacé par le modèle Zero Trust Network Access (ZTNA).</p>
 </div>
+
 <div class="content">
+
+  <!-- POURQUOI CE SUJET -->
   <div class="block">
-    <div class="block-title">En cours de rédaction</div>
-    <p>Cette section sera complétée prochainement avec mes articles et synthèses de veille technologique sur les thèmes liés à la cybersécurité, aux systèmes et réseaux, et aux nouvelles technologies de l'infrastructure informatique.</p>
+    <div class="block-title">Pourquoi ce sujet ?</div>
+    <div class="veille-intro">
+      <p>Dans le cadre de mon AP 2ème année, j'ai configuré un <strong>VPN OpenVPN sur pfSense</strong> pour permettre un accès distant sécurisé au réseau interne. Cette expérience m'a amené à me questionner : est-ce que le VPN est encore la meilleure réponse en 2025 ? En faisant des recherches, j'ai découvert que le secteur entier est en train de basculer vers un nouveau modèle appelé <strong>Zero Trust</strong>, et que les VPN classiques sont désormais considérés comme une technologie vieillissante et risquée.</p>
+    </div>
   </div>
+
+  <!-- CHIFFRES CLÉS -->
+  <div class="block">
+    <div class="block-title">Les chiffres qui parlent d'eux-mêmes</div>
+    <div class="stats-veille">
+      <div class="stat-v"><div class="num">81%</div><div class="desc">des entreprises prévoient d'adopter le Zero Trust d'ici 2026</div></div>
+      <div class="stat-v"><div class="num">65%</div><div class="desc">prévoient de remplacer leur VPN dans les 12 prochains mois</div></div>
+      <div class="stat-v"><div class="num">92%</div><div class="desc">craignent que les failles VPN entraînent des attaques ransomware</div></div>
+      <div class="stat-v"><div class="num">+50%</div><div class="desc">des entreprises ont subi une attaque via leur VPN en un an</div></div>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);text-align:center;margin-top:0.5rem;">Source : Zscaler ThreatLabz 2025 VPN Risk Report — enquête auprès de 632 professionnels IT</p>
+  </div>
+
+  <!-- VPN VS ZTNA -->
+  <div class="block">
+    <div class="block-title">VPN classique vs Zero Trust (ZTNA) : quelle différence ?</div>
+    <p style="color:var(--muted);font-size:0.92rem;margin-bottom:1rem;">Le VPN fonctionne comme un château fort : une fois dedans, on peut circuler librement. Le ZTNA vérifie chaque accès individuellement, même pour quelqu'un déjà "dans" le réseau.</p>
+    <div class="compare-grid">
+      <div class="compare-col bad">
+        <h4>🔴 VPN traditionnel (OpenVPN, IPsec…)</h4>
+        <ul class="compare-list">
+          <li><span class="ico-bad">✗</span> Accès global au réseau une fois connecté</li>
+          <li><span class="ico-bad">✗</span> Si les identifiants sont volés → l'attaquant accède à tout</li>
+          <li><span class="ico-bad">✗</span> Équipement exposé sur Internet → cible facile</li>
+          <li><span class="ico-bad">✗</span> Lent, difficile à maintenir, mauvaise expérience utilisateur</li>
+          <li><span class="ico-bad">✗</span> Pas de vérification de l'état de santé de l'appareil</li>
+          <li><span class="ico-bad">✗</span> Mouvement latéral possible en cas de compromission</li>
+        </ul>
+      </div>
+      <div class="compare-col good">
+        <h4>🟢 Zero Trust Network Access (ZTNA)</h4>
+        <ul class="compare-list">
+          <li><span class="ico-good">✓</span> Accès uniquement à l'application autorisée, pas au réseau</li>
+          <li><span class="ico-good">✓</span> Vérification continue : identité + appareil + localisation</li>
+          <li><span class="ico-good">✓</span> Applications invisibles depuis Internet</li>
+          <li><span class="ico-good">✓</span> Plus rapide, scalable, basé sur le cloud</li>
+          <li><span class="ico-good">✓</span> Contrôle granulaire : on donne exactement ce qu'il faut</li>
+          <li><span class="ico-good">✓</span> Mouvement latéral impossible : chaque accès est isolé</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES / FRISE -->
+  <div class="block">
+    <div class="block-title">Sources et articles suivis</div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-date">Avril 2025</span>
+            <span class="tl-source">Zscaler ThreatLabz — Rapport annuel</span>
+          </div>
+          <h3>Rapport 2025 sur les risques liés aux VPN</h3>
+          <p>Enquête mondiale menée auprès de 632 professionnels IT et cybersécurité. Le rapport révèle que plus de la moitié des entreprises ont subi une attaque directement liée à une faille VPN en un an. Les hackers utilisent de plus en plus l'IA pour automatiser la reconnaissance des équipements VPN exposés et lancer des attaques à grande échelle. Le rapport documente aussi l'analyse des CVE (failles référencées) des VPN entre 2020 et 2025 : leur nombre et leur gravité augmentent chaque année.</p>
+          <div class="tl-key">💡 Chiffre clé : 81% des entreprises prévoient d'adopter le Zero Trust d'ici 2026 — soit une hausse de 23% par rapport à l'année précédente.</div>
+          <a class="tl-link" href="https://www.zscaler.com/fr/learn/2025-vpn-risk-report" target="_blank">🔗 Lire le rapport →</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-date">Janvier 2026</span>
+            <span class="tl-source">Netskope — Documentation technique</span>
+          </div>
+          <h3>Qu'est-ce que le ZTNA ? Définition et cas d'usage</h3>
+          <p>Article de référence technique publié par Netskope, acteur majeur du secteur ZTNA. Explique en détail le fonctionnement du Zero Trust Network Access : comment un "courtier ZTNA" basé dans le cloud vérifie l'identité et la posture de sécurité d'un appareil avant d'autoriser la connexion à une application spécifique. Contrairement au VPN, l'utilisateur n'est jamais connecté au réseau — seulement à l'application ciblée. Cela supprime le risque de mouvement latéral (propagation d'une attaque d'une machine à l'autre).</p>
+          <div class="tl-key">💡 Principe fondamental : "Ne jamais faire confiance, toujours vérifier" — même pour un utilisateur déjà connecté.</div>
+          <a class="tl-link" href="https://www.netskope.com/fr/security-defined/what-is-zero-trust-network-access" target="_blank">🔗 Lire l'article →</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-date">Novembre 2024</span>
+            <span class="tl-source">Palo Alto Networks — Documentation</span>
+          </div>
+          <h3>ZTNA vs VPN : pourquoi les entreprises migrent ?</h3>
+          <p>Palo Alto Networks, l'un des leaders mondiaux de la cybersécurité, compare les deux approches. L'article explique que le VPN accorde la confiance sur la simple vérification des identifiants au moment de la connexion — ce qui devient insuffisant dans un contexte où les attaquants volent facilement des comptes via phishing ou attaques par force brute. Le ZTNA, lui, vérifie en continu plusieurs facteurs : qui est l'utilisateur, depuis quel appareil, depuis quel endroit, à quelle heure, et vers quelle ressource. Chaque accès est une décision indépendante.</p>
+          <div class="tl-key">💡 Concept clé : "moindre privilège" — un utilisateur n'accède qu'à ce dont il a strictement besoin, rien de plus.</div>
+          <a class="tl-link" href="https://www.paloaltonetworks.fr/cyberpedia/what-is-zero-trust-network-access-ztna" target="_blank">🔗 Lire l'article →</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-date">Octobre 2024</span>
+            <span class="tl-source">Cloudflare — Learning Center</span>
+          </div>
+          <h3>Comment fonctionne le ZTNA concrètement ?</h3>
+          <p>Cloudflare, qui propose sa propre solution ZTNA (Cloudflare Access), explique de manière très claire le fonctionnement technique. Deux modèles de déploiement existent : le modèle basé sur un agent (une application installée sur l'appareil qui vérifie sa conformité) et le modèle basé sur un service cloud sans agent (idéal pour les sous-traitants ou appareils personnels). L'article aborde aussi l'intégration du ZTNA dans le modèle SASE (Secure Access Service Edge) qui regroupe réseau et sécurité dans une solution cloud unifiée.</p>
+          <div class="tl-key">💡 Cas concret : un sous-traitant qui se connecte depuis son appareil personnel n'accède qu'à l'application métier concernée — jamais au réseau de l'entreprise.</div>
+          <a class="tl-link" href="https://www.cloudflare.com/fr-fr/learning/access-management/what-is-ztna/" target="_blank">🔗 Lire l'article →</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-date">Décembre 2025</span>
+            <span class="tl-source">NetBird — Knowledge Hub</span>
+          </div>
+          <h3>Alternatives open source au ZTNA propriétaire</h3>
+          <p>Pour les PME qui ne peuvent pas se payer des solutions enterprise comme Zscaler ou Cloudflare Access, il existe des alternatives open source sérieuses. NetBird, basé sur le protocole WireGuard, propose une solution ZTNA open source avec interface web, gestion des accès par groupes, et intégration SSO. Firezone est une autre alternative performante. Ces solutions permettent d'appliquer les principes Zero Trust même pour de petites infrastructures, sans coût de licence.</p>
+          <div class="tl-key">💡 Lien avec ma formation : WireGuard est le protocole utilisé par Tailscale, que les techniciens SISR rencontrent de plus en plus en entreprise comme alternative à OpenVPN.</div>
+          <a class="tl-link" href="https://netbird.io/knowledge-hub/top-5-opensource-alternatives-to-tailscale2" target="_blank">🔗 Lire l'article →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OUTILS DU MARCHÉ -->
+  <div class="block">
+    <div class="block-title">Les principaux outils du marché</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-badge badge-enterprise">Enterprise</span>
+        <h4>Zscaler ZPA</h4>
+        <p>Leader du marché ZTNA cloud. Utilisé par les grandes entreprises. Accès par application, surveillance continue, intégration IAM.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-badge badge-enterprise">Enterprise</span>
+        <h4>Cloudflare Access</h4>
+        <p>Solution ZTNA sans agent de Cloudflare. Idéale pour les accès web. Gratuit jusqu'à 50 utilisateurs.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-badge badge-enterprise">Enterprise</span>
+        <h4>Fortinet ZTNA</h4>
+        <p>Intégré dans FortiOS. Permet d'appliquer le Zero Trust pour les utilisateurs en bureau et en télétravail depuis une seule politique.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-badge badge-open">Open Source</span>
+        <h4>Tailscale / NetBird</h4>
+        <p>Solutions mesh VPN basées sur WireGuard. Approche Zero Trust, sans configuration complexe. Idéal pour PME ou usage personnel.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-badge badge-open">Open Source</span>
+        <h4>Firezone</h4>
+        <p>Alternative open source enterprise-ready à Zscaler. Basé sur WireGuard, peer-to-peer, 3 à 4x plus rapide qu'OpenVPN.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-badge badge-enterprise">Microsoft</span>
+        <h4>Entra ID (Azure AD)</h4>
+        <p>Gestion des identités Microsoft. Souvent combiné à une solution ZTNA pour l'authentification contextuelle et le MFA.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYNTHÈSE PERSONNELLE -->
+  <div class="block">
+    <div class="block-title">Ma synthèse</div>
+    <div class="synthesis">
+      <h3>Ce que j'en retiens en tant que futur technicien SISR</h3>
+      <p>Le VPN que j'ai configuré avec pfSense/OpenVPN est une technologie que je maîtrise et qui reste pertinente dans certains contextes (petites structures, usage personnel). Mais ma veille m'a clairement montré que ce modèle atteint ses limites en entreprise : il suffit qu'un identifiant soit volé pour qu'un attaquant accède à l'ensemble du réseau interne. C'est exactement ce qui a causé plusieurs grandes cyberattaques récentes.</p>
+      <p>Le Zero Trust est une philosophie différente : au lieu de faire confiance à quelqu'un parce qu'il est "dans" le réseau, on vérifie chaque accès individuellement. C'est plus complexe à mettre en place, mais bien plus sécurisé. En tant que futur technicien réseau, il est important de connaître ces deux approches et de comprendre pourquoi les entreprises migrent vers le ZTNA.</p>
+      <p>Ce qui m'intéresse particulièrement pour la suite : des outils comme <strong style="color:var(--text)">Tailscale</strong> ou <strong style="color:var(--text)">Firezone</strong> qui permettent d'appliquer ces principes Zero Trust à petite échelle, sans les budgets enterprise de Zscaler. C'est une piste concrète pour des missions en PME ou en ESN comme APE Conseil.</p>
+    </div>
+  </div>
+
 </div>
 <footer><p>Joseph Kittaneh · BTS SIO SISR · Lycée La Martinière Duchère · Lyon</p></footer>
 </body>
