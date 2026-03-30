@@ -60,9 +60,12 @@ nav {
 /* ── Dropdown niveau 1 ── */
 .dropdown { position: relative; }
 .dropdown-menu {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease, visibility 0s linear 0.25s;
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   left: 0;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -72,7 +75,12 @@ nav {
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
   z-index: 100;
 }
-.dropdown:hover .dropdown-menu { display: block; }
+.dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.12s ease;
+}
 .dropdown-menu a {
   display: block;
   padding: 7px 12px;
@@ -89,7 +97,10 @@ nav {
 .has-submenu { position: relative; }
 .has-submenu > a::after { content: ' ›'; color: var(--accent); }
 .submenu {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease, visibility 0s linear 0.25s;
   position: absolute;
   top: 0;
   left: calc(100% + 4px);
@@ -101,7 +112,12 @@ nav {
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
   z-index: 101;
 }
-.has-submenu:hover .submenu { display: block; }
+.has-submenu:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.12s ease;
+}
 .submenu a {
   display: block;
   padding: 7px 12px;
